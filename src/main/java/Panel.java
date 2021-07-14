@@ -28,7 +28,7 @@ class Panel extends JPanel {
                 break;
             case "image":
                 createHorizontalBox.add(Box.createHorizontalStrut(1));
-                ImageIcon icon = new ImageIcon("img/test.gif");
+                ImageIcon icon = new ImageIcon("img/오늘.png");
                 JLabel a = new JLabel(icon);
                 createHorizontalBox.add(a);
                 add(createHorizontalBox);
