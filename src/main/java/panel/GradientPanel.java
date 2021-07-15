@@ -1,11 +1,13 @@
+package panel;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class BackgroundPanel extends JPanel {
+public class GradientPanel extends JPanel {
 
     Color head,tail;
 
-    BackgroundPanel(Color start, Color end){
+    GradientPanel(Color start, Color end){
         this.head=start;
         this.tail=end;
     }
