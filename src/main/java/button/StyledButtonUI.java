@@ -4,9 +4,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
+import java.awt.image.ImageObserver;
 
 class StyledButtonUI extends BasicButtonUI {
 
+    ImageIcon imageIcon = null;
+
+    public StyledButtonUI(){
+
+    }
+    public StyledButtonUI(ImageIcon imageIcon) {
+        this.imageIcon = imageIcon;
+    }
     @Override
     public void installUI (JComponent c) {
         super.installUI(c);
@@ -30,5 +39,9 @@ class StyledButtonUI extends BasicButtonUI {
         g.fillRoundRect(0, yOffset, size.width, size.height - yOffset, 10, 10);
         g.setColor(c.getBackground());
         g.fillRoundRect(0, yOffset, size.width, size.height + yOffset - 5, 10, 10);
+        if(this.imageIcon!=null) {
+            g.drawImage(imageIcon.getImage(),40,15,null);
+        }
+
     }
 }
