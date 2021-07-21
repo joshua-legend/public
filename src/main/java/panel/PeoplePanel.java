@@ -7,7 +7,7 @@ public class PeoplePanel extends JPanel {
 
     JLabel image = new JLabel();
     JLabel keyword = new JLabel("234");
-    JLabel history = new JLabel("국민의힘 대표\n");
+    JLabel history = new JLabel("국민의힘 대표");
 
     GridBagLayout layout = new GridBagLayout();
     GridBagConstraints constraints = new GridBagConstraints();

@@ -1,3 +1,5 @@
+package activityPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,4 +13,17 @@ public class PoliticianVO {
         this.image = image;
         this.rgb = rgb;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ImageIcon getImage() {
+        return image;
+    }
+
+    public String getRgb() {
+        return rgb;
+    }
 }
+

@@ -11,18 +11,25 @@ public class PeopleChoosePanel extends JPanel {
 
     GridLayout layout = new GridLayout(4,3,10,10);
     Image mainImage = new ImageIcon("img/background/peoplechoosebackground.png").getImage();
-    ImageIcon leejunsukImage = new ImageIcon("img/lee1.png");
-    Rectangle rectangle = new Rectangle(50,550,100,100);
+    PoliticianData data = new PoliticianData();
 
     public PeopleChoosePanel() {
         setLayout(layout);
+        setBorder(BorderFactory.createEmptyBorder(10 , 10, 10 , 10));
 
-        JButton utilButton = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
-        JButton utilButton1 = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
-        JButton utilButton2 = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
-        JButton utilButton3 = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
-        JButton utilButton4 = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
-        JButton utilButton5 = new PeopleButton("이준석",leejunsukImage,"#4fc3f7","#e1f5fe",rectangle);
+        JButton utilButton = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton1 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton2 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton3 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton4 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton5 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton6 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton7 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton8 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton9 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton10 = new PeopleButton(PoliticianData.map.get("이준석"));
+        JButton utilButton11 = new PeopleButton(PoliticianData.map.get("이준석"));
+
 
         utilButton.addActionListener(new ActionButton());
         add(utilButton);
@@ -31,7 +38,12 @@ public class PeopleChoosePanel extends JPanel {
         add(utilButton3);
         add(utilButton4);
         add(utilButton5);
-
+        add(utilButton6);
+        add(utilButton7);
+        add(utilButton8);
+        add(utilButton9);
+        add(utilButton10);
+        add(utilButton11);
     }
 
     @Override

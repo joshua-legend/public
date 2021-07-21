@@ -13,4 +13,9 @@
       <module name="Today_Public_Mind" target="16" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Today_Public_Mind" options="--add-exports java.base/java=ALL-UNNAMED" />
+    </option>
+  </component>
 </project>

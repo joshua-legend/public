@@ -11,6 +11,10 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.CommentThreadListResponse;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -22,6 +26,9 @@ public class YoutubeApi {
 
     private static final String APPLICATION_NAME = "API code samples";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static CommentThreadListResponse response;
+
+//    CommentThreadListResponse response;
 
     /**
      * Build and return an authorized API client service.
@@ -43,15 +50,41 @@ public class YoutubeApi {
      * @throws GeneralSecurityException, IOException, GoogleJsonResponseException
      */
     public static void main(String[] args)
-            throws GeneralSecurityException, IOException, GoogleJsonResponseException {
+            throws GeneralSecurityException, IOException, GoogleJsonResponseException, ParseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
+//        YouTube.CommentThreads.List request = youtubeService.commentThreads()
+//                .list("snippet");
+//        CommentThreadListResponse response = request.setKey(DEVELOPER_KEY)
+////                .setPageToken("nextPageToken")
+//                .setMaxResults(100L)
+//                .setTextFormat("plainText")
+//                .setVideoId("zTywy_Iipdw")
+//                .execute();
         YouTube.CommentThreads.List request = youtubeService.commentThreads()
                 .list("snippet");
-        CommentThreadListResponse response = request.setKey(DEVELOPER_KEY)
+
+
+        response = request.setKey(DEVELOPER_KEY)
+                .setMaxResults(100L)
                 .setTextFormat("plainText")
-                .setVideoId("KAotIgfV2b8")
+                .setVideoId("zTywy_Iipdw")
                 .execute();
         System.out.println(response);
+        Json.get(response.toString(),"이준석","테스트");
+
+        String str = response.toString();
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject = (JSONObject)jsonParser.parse(str);
+        String token = (String) jsonObject.get("nextPageToken");
+
+        System.out.println(token);
+        response = request.setPageToken(token)
+                .setMaxResults(100L)
+                .setTextFormat("plainText")
+                .setVideoId("zTywy_Iipdw")
+                .execute();
+        System.out.println(response);
+        Json.get(response.toString(),"이준석","테스트");
     }
 }

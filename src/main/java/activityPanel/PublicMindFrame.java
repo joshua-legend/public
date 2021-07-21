@@ -13,9 +13,7 @@ public class PublicMindFrame extends JFrame {
     static OpeningImagePanel openingImagePanel = new OpeningImagePanel();
     static PeopleChoosePanel peopleChoosePanel = new PeopleChoosePanel();
 
-
     PublicMindFrame(){
-
         init();
         setVisible(true);
         setTitle("Public Mind");
