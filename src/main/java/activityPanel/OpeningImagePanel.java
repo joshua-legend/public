@@ -1,6 +1,6 @@
 package activityPanel;
 
-import button.UtilButton;
+import buttons.UtilButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +33,4 @@ public class OpeningImagePanel extends JPanel {
             PublicMindFrame.selectActivity(new MainPagePanel());
         }
     }
-
-
 }

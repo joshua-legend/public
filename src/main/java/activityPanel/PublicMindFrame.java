@@ -1,6 +1,7 @@
 package activityPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PublicMindFrame extends JFrame {
 
@@ -15,6 +16,7 @@ public class PublicMindFrame extends JFrame {
 
     PublicMindFrame(){
         init();
+        setLayout(new GridLayout(1,1));
         setVisible(true);
         setTitle("Public Mind");
         setSize(WIDTH,HEIGHT);
@@ -27,7 +29,7 @@ public class PublicMindFrame extends JFrame {
         nowPanel = openingImagePanel;
     }
 
-    static void selectActivity(JPanel selectedPanel){
+    public static void selectActivity(JPanel selectedPanel){
         main.remove(nowPanel);
         nowPanel = selectedPanel;
         main.add(selectedPanel);

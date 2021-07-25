@@ -49,42 +49,38 @@ public class YoutubeApi {
      *
      * @throws GeneralSecurityException, IOException, GoogleJsonResponseException
      */
-    public static void main(String[] args)
-            throws GeneralSecurityException, IOException, GoogleJsonResponseException, ParseException {
+    public static void main(String[] args) throws GeneralSecurityException, IOException, GoogleJsonResponseException, ParseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
-//        YouTube.CommentThreads.List request = youtubeService.commentThreads()
-//                .list("snippet");
-//        CommentThreadListResponse response = request.setKey(DEVELOPER_KEY)
-////                .setPageToken("nextPageToken")
-//                .setMaxResults(100L)
-//                .setTextFormat("plainText")
-//                .setVideoId("zTywy_Iipdw")
-//                .execute();
         YouTube.CommentThreads.List request = youtubeService.commentThreads()
                 .list("snippet");
-
 
         response = request.setKey(DEVELOPER_KEY)
                 .setMaxResults(100L)
                 .setTextFormat("plainText")
-                .setVideoId("zTywy_Iipdw")
+                .setVideoId("YI5t6S1OfOE")
                 .execute();
-        System.out.println(response);
-        Json.get(response.toString(),"이준석","테스트");
+        String result = response.toString();
+        Json.get(result,"이준석","zzz");
 
-        String str = response.toString();
-        JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject = (JSONObject)jsonParser.parse(str);
-        String token = (String) jsonObject.get("nextPageToken");
+        do {
+            try {
+                JSONParser jsonParser = new JSONParser();
+                JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+                String token = (String) jsonObject.get("nextPageToken");
+                System.out.println(token);
+                response = request.setPageToken(token)
+                        .setMaxResults(100L)
+                        .setTextFormat("plainText")
+                        .setVideoId("YI5t6S1OfOE")
+                        .execute();
+                Json.get(response.toString(),"이준석","zzz");
+                System.out.println(response);
+                result = response.toString();
+            }catch (Exception e){
+                break;
+            }
+        }while (true);
 
-        System.out.println(token);
-        response = request.setPageToken(token)
-                .setMaxResults(100L)
-                .setTextFormat("plainText")
-                .setVideoId("zTywy_Iipdw")
-                .execute();
-        System.out.println(response);
-        Json.get(response.toString(),"이준석","테스트");
     }
 }
