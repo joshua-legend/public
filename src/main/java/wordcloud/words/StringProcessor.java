@@ -12,6 +12,7 @@ public class StringProcessor implements Iterable<WordCount>{
         this.str = str;
         this.filter = filter;
         processString();
+        print();
     }
     
     private void processString() {

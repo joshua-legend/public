@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -102,7 +103,11 @@ public class PeopleChoose_PeoplePanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             PeopleButton peopleButton = (PeopleButton)e.getSource();
-            PublicMindFrame.selectActivity(new WordMapPanel(peopleButton.vo));
+            try {
+                PublicMindFrame.selectActivity(new WordMapPanel(peopleButton.vo));
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
     }
 

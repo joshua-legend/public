@@ -3,16 +3,14 @@ package activityPanel;
 import panel.*;
 import data.PoliticialFactorData;
 import data.PoliticianVO;
-import panel.wordmap.WordMap_MapPanel;
-import panel.wordmap.WordMap_ProfilePanel;
-import panel.wordmap.WordMap_ThreeButtonPanel;
-import panel.wordmap.WordMap_WordsPanel;
+import panel.wordmap.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class WordMapPanel extends JPanel {
 
@@ -24,7 +22,7 @@ public class WordMapPanel extends JPanel {
 
     PoliticianVO vo;
     String whichOne = "left";
-    public WordMapPanel(PoliticianVO vo) {
+    public WordMapPanel(PoliticianVO vo) throws IOException {
 
         this.vo = vo;
         PoliticialFactorData politicialFactorData = new PoliticialFactorData();
@@ -41,10 +39,10 @@ public class WordMapPanel extends JPanel {
         wordMapTwoButton.wordButton.addMouseListener(new MouseAction());
         wordMapTwoButton.mapButton.addMouseListener(new MouseAction());
 
-        add(wordMapPeopleInWordButtonPanel);
-
-        for(int i=0;i<9;i++)
-            wordMapPeopleInWordButtonPanel.wordButton[i].addActionListener(new WordButton(vo,wordMapPeopleInWordButtonPanel.wordButton[i].getVoTitle()));
+        add(new WordMap_GooglePanel());
+//        add(wordMapPeopleInWordButtonPanel);
+//        for(int i=0;i<9;i++)
+//            wordMapPeopleInWordButtonPanel.wordButton[i].addActionListener(new WordButton(vo,wordMapPeopleInWordButtonPanel.wordButton[i].getVoTitle()));
     }
     class MouseAction extends MouseAdapter {
 
@@ -53,16 +51,16 @@ public class WordMapPanel extends JPanel {
             super.mouseClicked(e);
             if(e.getSource()== wordMapTwoButton.wordButton){
                 if(whichOne.equals("right")){
-                    remove(wordMap_MapPanel);
-                    add(wordMapPeopleInWordButtonPanel);
+//                    remove(wordMap_MapPanel);
+//                    add(wordMapPeopleInWordButtonPanel);
                     updateUI();
                     whichOne="left";
                 }
             }
             if(e.getSource()== wordMapTwoButton.mapButton){
                 if(whichOne.equals("left")){
-                    remove(wordMapPeopleInWordButtonPanel);
-                    add(wordMap_MapPanel);
+//                    remove(wordMapPeopleInWordButtonPanel);
+//                    add(wordMap_MapPanel);
                     updateUI();
                     whichOne="right";
                 }

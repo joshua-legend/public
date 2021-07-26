@@ -16,24 +16,29 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class WordCloud {
-    public static final int WIDTH = 1200;
-    public static final int HEIGHT = 800;
+    public static final int WIDTH = 400;
+    public static final int HEIGHT = 400;
     public static final int PADDING = 30;
 
-    public static final String TEXT = "korean_test.txt";
+    public static final String TEXT = "이준석_일자리.txt";
     public static final String FILTER = "korean_filtering.txt";
 
-    public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame("Word Cloud");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationByPlatform(true);
-        frame.pack();
-        Insets insets = frame.getInsets();
-        frame.setSize(calcScreenSize(insets));
+//    public static void main(String[] args) throws IOException {
+//        JFrame frame = new JFrame("Word Cloud");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setLocationByPlatform(true);
+//        frame.pack();
+//        Insets insets = frame.getInsets();
+//        frame.setSize(calcScreenSize(insets));
+//        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
+//        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
+//        frame.setContentPane(new CloudViewer(generator.generateImage(strProcessor, System.currentTimeMillis())));
+//        frame.setVisible(true);
+//    }
+    public static CloudViewer cloud() throws IOException {
         StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
         CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-        frame.setContentPane(new CloudViewer(generator.generateImage(strProcessor, System.currentTimeMillis())));
-        frame.setVisible(true);
+        return new CloudViewer(generator.generateImage(strProcessor, System.currentTimeMillis()));
     }
 
     private static String readFile(String path) throws IOException {
