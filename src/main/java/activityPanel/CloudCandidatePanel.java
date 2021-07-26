@@ -25,25 +25,18 @@ public class CloudCandidatePanel extends JPanel {
     CloudCandidate_ProfilePanel cloudCandidate_profilePanel;
     PoliticianVO vo;
 
-
-
-
     public CloudCandidatePanel(PoliticianVO vo,String word) {
         setLayout(null);
         this.vo = vo;
         nowPanel = cloudCandidate_BarChart;
 
-        topPanel = new TopPanel(vo.getName()+"과 "+word+"의 토픽 모델");
+        topPanel = new TopPanel(vo.getName()+"과 "+word+"의 토픽 모델",TopPanel.NOTHINGLABEL);
         topPanel.backButton.addActionListener(new ActionButton());
         cloudCandidate_profilePanel = new CloudCandidate_ProfilePanel(vo.getImage());
         cloudCandidate_buttonsPanel.pieButton.addMouseListener(new MouseAction());
         cloudCandidate_buttonsPanel.barButton.addMouseListener(new MouseAction());
 
-
         add(topPanel);
-//        add(cloudCandidate_Piechart);
-//        add(cloudCandidate_BarChart);
-
         add(cloudCandidate_buttonsPanel);
         add(cloudCandidate_profilePanel);
     }
@@ -62,20 +55,18 @@ public class CloudCandidatePanel extends JPanel {
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
             if(e.getSource()==cloudCandidate_buttonsPanel.pieButton){
-                cloudCandidate_buttonsPanel.pieButton.setEnabled(false);
                 remove(nowPanel);
                 add(cloudCandidate_Piechart);
                 nowPanel = cloudCandidate_Piechart;
-                nowButton = cloudCandidate_buttonsPanel.pieButton;
                 updateUI();
             }
             if(e.getSource()== cloudCandidate_buttonsPanel.barButton){
-                cloudCandidate_buttonsPanel.barButton.setEnabled(false);
                 remove(nowPanel);
                 add(cloudCandidate_BarChart);
                 nowPanel = cloudCandidate_BarChart;
                 updateUI();
             }
+
         }
     }
 

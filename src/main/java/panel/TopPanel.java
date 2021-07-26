@@ -6,19 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TopPanel extends JPanel {
+    public static final int BACKBUTTON = 1;
+    public static final int SELECTBOX = 2;
+    public static final int NOTHINGLABEL = 3;
 
     GridBagLayout grid = new GridBagLayout();
     GridBagConstraints gcon = new GridBagConstraints();
 
-    public UtilButton backButton = new UtilButton("<-","#64b5f6","#ffffff");
+    public UtilButton backButton = new UtilButton("˂","#64b5f6","#ffffff");
     JLabel nothingLabel1 = new JLabel(" ");
     JLabel titleLabel = new JLabel();
     JLabel nothingLabel2 = new JLabel(" ");
+
     UtilButton backButton1 = new UtilButton(" ","#64b5f6","#ffffff");
+    String style[] = {"정당별", "이름별", "나이별"};
+    public JComboBox<String> selectBox = new JComboBox<>(style);
+    JLabel nothingLabel3 = new JLabel(" ");
 
-    Font font = new Font("맑은 고딕",Font.PLAIN,15);
+    Font font = new Font("맑은 고딕",Font.PLAIN,25);
 
-    public TopPanel(String panelName) {
+    public TopPanel(String panelName,int style) {
         setLayout(grid);
 
         controlConstraints(0,0,1,1);
@@ -44,12 +51,25 @@ public class TopPanel extends JPanel {
         grid.setConstraints(nothingLabel2,gcon);
         add(nothingLabel2);
 
-        controlConstraints(5,0,1,1);
-        backButton1.setBackground(Color.decode("#64b5f6"));
-        grid.setConstraints(backButton1,gcon);
-        add(backButton1);
-
-        setBounds(0,0,500,30);
+        switch (style){
+            case BACKBUTTON:
+                controlConstraints(5,0,1,1);
+                backButton1.setBackground(Color.decode("#64b5f6"));
+                grid.setConstraints(backButton1,gcon);
+                add(backButton1);
+                break;
+            case SELECTBOX:
+                controlConstraints(5,0,1,1);
+                grid.setConstraints(selectBox,gcon);
+                add(selectBox);
+                break;
+            case NOTHINGLABEL:
+                controlConstraints(5,0,1,1);
+                grid.setConstraints(nothingLabel3,gcon);
+                add(nothingLabel3);
+                break;
+        }
+        setBounds(0,0,490,30);
     }
 
     void controlConstraints(int x,int y,int width,int height){
@@ -60,5 +80,9 @@ public class TopPanel extends JPanel {
         gcon.gridy = y;
         gcon.gridwidth = width;
         gcon.gridheight = height;
+    }
+
+    String getSelectBox(){
+        return selectBox.getSelectedItem().toString();
     }
 }

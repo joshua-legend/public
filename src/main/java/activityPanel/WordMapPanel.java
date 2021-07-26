@@ -5,7 +5,7 @@ import data.PoliticialFactorData;
 import data.PoliticianVO;
 import panel.wordmap.WordMap_MapPanel;
 import panel.wordmap.WordMap_ProfilePanel;
-import panel.wordmap.WordMap_TwoButtonPanel;
+import panel.wordmap.WordMap_ThreeButtonPanel;
 import panel.wordmap.WordMap_WordsPanel;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class WordMapPanel extends JPanel {
 
     TopPanel topPanel;
     WordMap_ProfilePanel wordMapProfilePanel;
-    WordMap_TwoButtonPanel wordMapTwoButton = new WordMap_TwoButtonPanel();
+    WordMap_ThreeButtonPanel wordMapTwoButton = new WordMap_ThreeButtonPanel();
     WordMap_WordsPanel wordMapPeopleInWordButtonPanel = new WordMap_WordsPanel();
     WordMap_MapPanel wordMap_MapPanel = new WordMap_MapPanel();
 
@@ -30,7 +30,7 @@ public class WordMapPanel extends JPanel {
         PoliticialFactorData politicialFactorData = new PoliticialFactorData();
         setLayout(null);
 
-        topPanel = new TopPanel(vo.getName());
+        topPanel = new TopPanel(vo.getName(),TopPanel.NOTHINGLABEL);
         topPanel.backButton.addActionListener(new ActionButton());
         add(topPanel);
 
@@ -45,8 +45,6 @@ public class WordMapPanel extends JPanel {
 
         for(int i=0;i<9;i++)
             wordMapPeopleInWordButtonPanel.wordButton[i].addActionListener(new WordButton(vo,wordMapPeopleInWordButtonPanel.wordButton[i].getVoTitle()));
-
-//        add(wordMap_buttonMapPanel);
     }
     class MouseAction extends MouseAdapter {
 

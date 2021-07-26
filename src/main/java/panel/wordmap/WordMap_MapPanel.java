@@ -1,6 +1,8 @@
 package panel.wordmap;
 
 
+import buttons.UtilButton;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,11 +22,12 @@ public class WordMap_MapPanel extends JPanel {
     }
     private void btnPanel() {
         setBackground(Color.WHITE);
-        JButton button[] = new JButton[310];
+        UtilButton button[] = new UtilButton[310];
         for(i=0;i<button.length;i++) {
-            button[i] = new JButton();
+            button[i] = new UtilButton();
             button[i].setFont(new Font("맑은 고딕",Font.PLAIN,10));
             button[i].setBackground(Color.WHITE);
+
             button[i].setPreferredSize(new Dimension(20,20));
 
             btnSetVisble(button);
@@ -34,49 +37,59 @@ public class WordMap_MapPanel extends JPanel {
             add(button[i]);
         }
     }
-    private void btnSetVisble(JButton[] button) {
+    private void btnSetVisble(UtilButton[] button) {
         if(i>=0 && i<9 || i>=10 && i<21) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=27 && i<36 || i>=44 && i<51) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=60 && i<67 || i>=77 && i<84) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=93 && i<99 || i>=110 && i<114) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=126 && i<132 || i>=142 && i<148) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=157 && i<164 || i>=174 && i<181) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=190 && i<196 || i>=206 && i<211) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=221 && i<226 || i>=234 && i<243 || i>=247 && i<249) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=251 && i<259 || i>=261 && i<262 || i>=263 && i<274) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=276 && i<277 || i>=278 && i<307) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
     }
-    private void btnEventSetArea(JButton[] button) {
+    private void btnEventSetArea(UtilButton[] button) {
         int[] gyeonggi = {21,36,37,38,51,52,53,54,70,71,84,85,86,87,101,102};
         int[] northChungcheong = {103,104,105,106,119,120,135,151,167};
         int[] southChungcheong = {99,100,114,115,116,117,118,132,133,148,149,164};
@@ -104,7 +117,7 @@ public class WordMap_MapPanel extends JPanel {
         eventSetArray(button,northGyeongsang,northGyeongsangStr);
         eventSetArray(button,southGyeongsang,southGyeongsangStr);
     }
-    private void btnEventSetCity(JButton[] button) {
+    private void btnEventSetCity(UtilButton[] button) {
         int seoul = 69;
         int sejong= 134;
         int daejeon= 150;
@@ -131,7 +144,7 @@ public class WordMap_MapPanel extends JPanel {
         eventSetArray(button,incheon,incheonStr);
         eventSetArray(button,jeju,jejuStr);
     }
-    private void eventSetInt(JButton[] button,int city,String cityStr) {
+    private void eventSetInt(UtilButton[] button,int city,String cityStr) {
 
         if(i==city) {
             button[city].setToolTipText(cityStr);
@@ -167,7 +180,7 @@ public class WordMap_MapPanel extends JPanel {
 
         }
     }
-    private void eventSetArray(JButton[] button,int[] city,String cityStr) {
+    private void eventSetArray(UtilButton[] button,int[] city,String cityStr) {
         for(int b = 0; b<city.length;b++) {
             if(i==city[b]) {
                 button[city[b]].setToolTipText(cityStr);
@@ -217,7 +230,7 @@ public class WordMap_MapPanel extends JPanel {
             }
         }
     }
-    private void intColor(JButton button,String cityStr) {
+    private void intColor(UtilButton button,String cityStr) {
         if(cityStr=="서울시") {
             button.setBackground(new Color(174,25,50));
         }else if(cityStr=="세종시") {
@@ -232,7 +245,7 @@ public class WordMap_MapPanel extends JPanel {
             button.setBackground(new Color(222, 239, 255));
         }
     }
-    private void areaColor(JButton button, String cityStr) {
+    private void areaColor(UtilButton button, String cityStr) {
         if(cityStr=="인천광역시") {
             button.setBackground(new Color(0, 178, 169));
         }else if(cityStr=="제주도") {

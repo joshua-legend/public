@@ -7,6 +7,10 @@ import java.awt.*;
 
 public class UtilButton extends JButton {
 
+    public UtilButton() {
+        setUI(new StyledButtonUI());
+    }
+
     public UtilButton(String str, String backRGB, String foreRGB) {
         setFont(new Font("UhBee ZZIBA",Font.PLAIN,20));
         setText(str);
