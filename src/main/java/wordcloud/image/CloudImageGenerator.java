@@ -16,13 +16,13 @@ import java.util.Random;
  */
 public class CloudImageGenerator {
     private static final int REJECT_COUNT = 100;
-    private static final int LARGEST_FONT_SIZE = 160;
-    private static final int FONT_STEP_SIZE = 5;
-    private static final int MINIMUM_FONT_SIZE = 20;
-    private static final int MINIMUM_WORD_COUNT = 2;
+    private static final int LARGEST_FONT_SIZE = 40;
+    private static final int FONT_STEP_SIZE = 2;
+    private static final int MINIMUM_FONT_SIZE = 10;
+    private static final int MINIMUM_WORD_COUNT = 3;
 //    public static final String FONT_FAMILY = "나눔명조";
     public static final String FONT_FAMILY = "Helvetica";
-    public static final String[] THEME = ColorCombinations.THEME1;
+    public static final String[] THEME = ColorCombinations.THEME3;
     
     private String fontFamily;
     private final int width;
@@ -45,7 +45,7 @@ public class CloudImageGenerator {
      */
     public BufferedImage generateImage(Iterable<WordCount> words, long seed) {
         Random rand = new Random(seed);
-        bi = new BufferedImage(width + 2 * padding, height + 2 * padding, BufferedImage.TYPE_INT_ARGB);
+        bi = new BufferedImage(width+100 + 2 * padding, height + 2 * padding+200, BufferedImage.TYPE_INT_ARGB);
         colorTheme = new ColorCombinations(THEME);
         Graphics2D g = bi.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -91,10 +91,8 @@ public class CloudImageGenerator {
     }
     
     private Shape stringShape(Font font, FontMetrics fm, String word, Random rand) {
-        int strWidth = fm.stringWidth(word);
-        int strHeight = fm.getAscent();
-        int x = rand.nextInt(width - strWidth);
-        int y = rand.nextInt(height- strHeight) + strHeight;
+        int x = rand.nextInt(325)+25;
+        int y = rand.nextInt(350);
         GlyphVector v = font.createGlyphVector(fm.getFontRenderContext(), word);
         AffineTransform at = new AffineTransform();
         at.translate(x, y);

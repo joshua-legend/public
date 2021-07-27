@@ -13,7 +13,7 @@ public class TopPanel extends JPanel {
     GridBagLayout grid = new GridBagLayout();
     GridBagConstraints gcon = new GridBagConstraints();
 
-    public UtilButton backButton = new UtilButton("˂","#64b5f6","#ffffff");
+    public UtilButton backButton = new UtilButton("Back","#64b5f6","#ffffff");
     JLabel nothingLabel1 = new JLabel(" ");
     JLabel titleLabel = new JLabel();
     JLabel nothingLabel2 = new JLabel(" ");
@@ -53,18 +53,18 @@ public class TopPanel extends JPanel {
 
         switch (style){
             case BACKBUTTON:
-                controlConstraints(5,0,1,1);
+                controlConstraints(4,0,1,1);
                 backButton1.setBackground(Color.decode("#64b5f6"));
                 grid.setConstraints(backButton1,gcon);
                 add(backButton1);
                 break;
             case SELECTBOX:
-                controlConstraints(5,0,1,1);
+                controlConstraints(4,0,1,1);
                 grid.setConstraints(selectBox,gcon);
                 add(selectBox);
                 break;
             case NOTHINGLABEL:
-                controlConstraints(5,0,1,1);
+                controlConstraints(4,0,1,1);
                 grid.setConstraints(nothingLabel3,gcon);
                 add(nothingLabel3);
                 break;

@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+@Deprecated
 public class CloudCandidatePanel extends JPanel {
     TopPanel topPanel;
     JPanel nowPanel;
@@ -46,7 +47,7 @@ public class CloudCandidatePanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                PublicMindFrame.selectActivity(new WordMapPanel(vo));
+                PublicMindFrame.selectActivity(new CandidatePanel(vo));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }

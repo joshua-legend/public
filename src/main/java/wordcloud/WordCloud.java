@@ -4,7 +4,6 @@ package wordcloud;
 import wordcloud.image.CloudImageGenerator;
 import wordcloud.words.StringProcessor;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,26 +18,13 @@ public class WordCloud {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 400;
     public static final int PADDING = 30;
-
-    public static final String TEXT = "이준석_일자리.txt";
+    public static final String TEXT = "korean_test.txt";
     public static final String FILTER = "korean_filtering.txt";
 
-//    public static void main(String[] args) throws IOException {
-//        JFrame frame = new JFrame("Word Cloud");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLocationByPlatform(true);
-//        frame.pack();
-//        Insets insets = frame.getInsets();
-//        frame.setSize(calcScreenSize(insets));
-//        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
-//        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-//        frame.setContentPane(new CloudViewer(generator.generateImage(strProcessor, System.currentTimeMillis())));
-//        frame.setVisible(true);
-//    }
-    public static CloudViewer cloud() throws IOException {
+    public static CloudViewerPanel cloud() throws IOException {
         StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
         CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-        return new CloudViewer(generator.generateImage(strProcessor, System.currentTimeMillis()));
+        return new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
     }
 
     private static String readFile(String path) throws IOException {
@@ -51,7 +37,6 @@ public class WordCloud {
             stream.close();
         }
     }
-
     /**
      * This function generates a list of words to be filtered when a cloud is generated
      */
@@ -62,11 +47,5 @@ public class WordCloud {
             filter.add(scan.next());
         }
         return filter;
-    }
-
-    private static Dimension calcScreenSize(Insets insets) {
-        int width = insets.left + insets.right + WIDTH + PADDING * 2;
-        int height = insets.top + insets.bottom + HEIGHT + PADDING * 2;
-        return new Dimension(width, height);
     }
 }

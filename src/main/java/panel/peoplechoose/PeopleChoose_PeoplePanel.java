@@ -1,7 +1,7 @@
 package panel.peoplechoose;
 
 import activityPanel.PublicMindFrame;
-import activityPanel.WordMapPanel;
+import activityPanel.CandidatePanel;
 import buttons.PeopleButton;
 import data.Party;
 import data.PoliticianData;
@@ -104,7 +104,7 @@ public class PeopleChoose_PeoplePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             PeopleButton peopleButton = (PeopleButton)e.getSource();
             try {
-                PublicMindFrame.selectActivity(new WordMapPanel(peopleButton.vo));
+                PublicMindFrame.selectActivity(new CandidatePanel(peopleButton.vo));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
