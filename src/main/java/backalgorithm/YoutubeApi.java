@@ -58,11 +58,11 @@ public class YoutubeApi {
         response = request.setKey(DEVELOPER_KEY)
                 .setMaxResults(100L)
                 .setTextFormat("plainText")
-                .setVideoId("YI5t6S1OfOE")
+                .setVideoId("lqzExR7QSMw")
                 .execute();
         String result = response.toString();
-        Json.get(result,"이준석","zzz");
 
+        Json.get(result,"심상정");
         do {
             try {
                 JSONParser jsonParser = new JSONParser();
@@ -72,10 +72,9 @@ public class YoutubeApi {
                 response = request.setPageToken(token)
                         .setMaxResults(100L)
                         .setTextFormat("plainText")
-                        .setVideoId("YI5t6S1OfOE")
+                        .setVideoId("lqzExR7QSMw")
                         .execute();
-                Json.get(response.toString(),"이준석","zzz");
-                System.out.println(response);
+                Json.get(response.toString(),"심상정");
                 result = response.toString();
             }catch (Exception e){
                 break;

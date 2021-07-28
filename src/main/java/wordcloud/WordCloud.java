@@ -18,8 +18,15 @@ public class WordCloud {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 400;
     public static final int PADDING = 30;
-    public static final String TEXT = "korean_test.txt";
+    public static final String TEXT = "심상정.txt";
     public static final String FILTER = "korean_filtering.txt";
+
+
+    public static void main(String[] args) throws IOException {
+        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
+        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
+        new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
+    }
 
     public static CloudViewerPanel cloud() throws IOException {
         StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));

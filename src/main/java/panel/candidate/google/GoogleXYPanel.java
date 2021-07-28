@@ -5,10 +5,9 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.labels.BubbleXYItemLabelGenerator;
-import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYBubbleRenderer;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.DefaultXYZDataset;
 import org.jfree.data.xy.XYZDataset;
 
@@ -25,9 +24,12 @@ public class GoogleXYPanel extends JPanel {
 
         // Create chart
         JFreeChart chart = ChartFactory.createBubbleChart(
-                "presidential candidates",
-                "Attention",
-                "Positive", dataset);
+                "관심도와 긍정도",
+                "Interest Degree",
+                "Affirmative Degree",
+                dataset,
+                PlotOrientation.HORIZONTAL,
+                true, true, false);
 
 
         // Set range for X-Axis
@@ -59,10 +61,10 @@ public class GoogleXYPanel extends JPanel {
     private XYZDataset createDataset() {
         DefaultXYZDataset dataset = new DefaultXYZDataset();
 
-        dataset.addSeries("INDIA", new double[][] {{ 40 }, { 65 }, { 25 }});
-        dataset.addSeries("USA", new double[][] { { 30 }, { 20 }, { 25 }});
-        dataset.addSeries("CHINA", new double[][] { { 80 }, { 50 }, { 25 } });
-        dataset.addSeries("JAPAN", new double[][] { { 11 }, { 50 }, { 25 } });
+        dataset.addSeries("INDIA", new double[][] {{ 40 }, { 65 }, { 10 }});
+        dataset.addSeries("USA", new double[][] { { 30 }, { 20 }, { 10 }});
+        dataset.addSeries("CHINA", new double[][] { { 80 }, { 50 }, { 10 } });
+        dataset.addSeries("JAPAN", new double[][] { { 11 }, { 50 }, { 10 } });
 
         return dataset;
     }

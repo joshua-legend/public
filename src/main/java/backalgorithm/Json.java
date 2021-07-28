@@ -12,14 +12,15 @@ import java.io.IOException;
 
 public class Json {
 
-    static String textDisplay=null;
+    static String textDisplay=" ";
 
 
-    public static void get(String str,String name,String category) throws ParseException, IOException {
+    public static void get(String str,String name) throws ParseException, IOException {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject)jsonParser.parse(str);
         JSONArray personArray = (JSONArray) jsonObject.get("items");
 
+        boolean flag =false;
         for(int i=0;i<personArray.size();i++){
             JSONObject itemObject = (JSONObject) personArray.get(i);
             JSONObject snippetObject =  (JSONObject)itemObject.get("snippet");
@@ -27,12 +28,14 @@ public class Json {
             JSONObject snippetCoreObject =  (JSONObject)topLevelComment.get("snippet");
             int like = Integer.parseInt(snippetCoreObject.get("likeCount").toString());
             if(like > 5){
+                flag = true;
                 textDisplay += snippetCoreObject.get("textDisplay").toString();
-                System.out.println(like);
             }
         }
 
-        File file = new File("D:\\politicsdata\\"+name+"_"+category+".txt");
+        if(!flag) textDisplay=" ";
+
+        File file = new File("D:\\politicsdata\\"+name+".txt");
         FileWriter writer = null;
 
         if(file.exists()){
@@ -41,7 +44,9 @@ public class Json {
                 writer = new FileWriter(file, true);
                 writer.write(textDisplay);
                 writer.flush();
+                textDisplay=null;
                 System.out.println("DONE");
+                System.out.println(textDisplay);
             } catch(IOException e) {
                 e.printStackTrace();
             } finally {
@@ -59,7 +64,9 @@ public class Json {
                 writer = new FileWriter(file, true);
                 writer.write(textDisplay);
                 writer.flush();
+                textDisplay=null;
                 System.out.println("DONE");
+                System.out.println(textDisplay);
             } catch(IOException e) {
                 e.printStackTrace();
             } finally {
@@ -70,7 +77,6 @@ public class Json {
                 }
             }
         }
-        textDisplay=null;
     }
 
 }

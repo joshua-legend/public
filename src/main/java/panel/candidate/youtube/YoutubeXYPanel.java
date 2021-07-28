@@ -5,6 +5,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.labels.BubbleXYItemLabelGenerator;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYBubbleRenderer;
 import org.jfree.data.xy.DefaultXYZDataset;
@@ -23,11 +24,12 @@ public class YoutubeXYPanel extends JPanel {
 
         // Create chart
         JFreeChart chart = ChartFactory.createBubbleChart(
-                "presidential candidates",
-                "Attention",
-                "Positive", dataset);
-
-
+                "AGE vs WEIGHT vs WORK",
+                "Weight",
+                "AGE",
+                dataset,
+                PlotOrientation.HORIZONTAL,
+                true, true, false);
         // Set range for X-Axis
         XYPlot plot = chart.getXYPlot();
         NumberAxis domain = (NumberAxis) plot.getDomainAxis();
@@ -56,12 +58,10 @@ public class YoutubeXYPanel extends JPanel {
 
     private XYZDataset createDataset() {
         DefaultXYZDataset dataset = new DefaultXYZDataset();
-
         dataset.addSeries("INDIA", new double[][] {{ 40 }, { 65 }, { 25 }});
         dataset.addSeries("USA", new double[][] { { 30 }, { 20 }, { 25 }});
         dataset.addSeries("CHINA", new double[][] { { 80 }, { 50 }, { 25 } });
         dataset.addSeries("JAPAN", new double[][] { { 11 }, { 50 }, { 25 } });
-
         return dataset;
     }
 }
