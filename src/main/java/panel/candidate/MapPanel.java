@@ -2,6 +2,7 @@ package panel.candidate;
 
 
 import buttons.UtilButton;
+import sql.SQL_OrderByWords;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,11 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.JPanel;
 
 public class MapPanel extends JPanel {
     private int i;
-    public MapPanel(){
+    SQL_OrderByWords sql_orderByWords;
+    HashMap<String,Integer> hashMap;
+
+    public MapPanel(String whose) throws SQLException {
+        sql_orderByWords = new SQL_OrderByWords(whose,"area");
+        hashMap=sql_orderByWords.getArea();
         btnPanel();
         setBounds(0,200,500,480);
     }
@@ -26,9 +34,7 @@ public class MapPanel extends JPanel {
             button[i] = new UtilButton();
             button[i].setFont(new Font("맑은 고딕",Font.PLAIN,10));
             button[i].setBackground(Color.WHITE);
-
             button[i].setPreferredSize(new Dimension(20,20));
-
             btnSetVisble(button);
             btnEventSetArea(button);
             btnEventSetCity(button);
@@ -115,6 +121,7 @@ public class MapPanel extends JPanel {
         eventSetArray(button,gangwon,gangwonStr);
         eventSetArray(button,northGyeongsang,northGyeongsangStr);
         eventSetArray(button,southGyeongsang,southGyeongsangStr);
+
     }
     private void btnEventSetCity(UtilButton[] button) {
         int seoul = 69;
@@ -123,14 +130,14 @@ public class MapPanel extends JPanel {
         int daegu= 186;
         int ulsan= 205;
         int busan= 220;
-        String seoulStr="서울시";
+        String seoulStr="서울특별시";
         String sejongStr="세종시";
         String daejeonStr="대전광역시";
         String daeguStr="대구광역시";
         String ulsanStr="울산광역시";
         String busanStr="부산광역시";
         eventSetInt(button,seoul,seoulStr);
-        eventSetInt(button,sejong,sejongStr);
+//        eventSetInt(button,sejong,sejongStr);
         eventSetInt(button,daejeon,daejeonStr);
         eventSetInt(button,daegu,daeguStr);
         eventSetInt(button,ulsan,ulsanStr);
@@ -139,132 +146,39 @@ public class MapPanel extends JPanel {
         int[] incheon= {67,68};
         int[] jeju= {307,308,309};
         String incheonStr = "인천광역시";
-        String jejuStr = "제주도";
+        String jejuStr = "제주특별자치도";
         eventSetArray(button,incheon,incheonStr);
         eventSetArray(button,jeju,jejuStr);
     }
     private void eventSetInt(UtilButton[] button,int city,String cityStr) {
-
         if(i==city) {
             button[city].setToolTipText(cityStr);
-            button[city].addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    button[city].setBackground(Color.WHITE);
-
-                }
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    intColor(button[city],cityStr);
-                }
-            });
-            button[city].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if(cityStr=="서울시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }else if(cityStr=="세종시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }else if(cityStr=="대전광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }else if(cityStr=="대구광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }else if(cityStr=="울산광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }else if(cityStr=="부산광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                    }
-                }
-            });
-
+            if(this.hashMap.get(cityStr)>95) button[city].setBackground(Color.decode("#0d47a1"));
+            else if(this.hashMap.get(cityStr)>90)button[city].setBackground(Color.decode("#1565c0"));
+            else if(this.hashMap.get(cityStr)>85)button[city].setBackground(Color.decode("#1976d2"));
+            else if(this.hashMap.get(cityStr)>80)button[city].setBackground(Color.decode("#1e88e5"));
+            else if(this.hashMap.get(cityStr)>75)button[city].setBackground(Color.decode("#2196f3"));
+            else if(this.hashMap.get(cityStr)>70)button[city].setBackground(Color.decode("#64b5f6"));
+            else if(this.hashMap.get(cityStr)>65)button[city].setBackground(Color.decode("#90caf9"));
+            else if(this.hashMap.get(cityStr)>60)button[city].setBackground(Color.decode("#bbdefb"));
+            else button[city].setBackground(Color.decode("#e3f2fd"));
         }
     }
     private void eventSetArray(UtilButton[] button,int[] city,String cityStr) {
+        if(this.hashMap.get(cityStr)==null) return;
         for(int b = 0; b<city.length;b++) {
             if(i==city[b]) {
                 button[city[b]].setToolTipText(cityStr);
-                button[city[b]].addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        for(int b = 0; b<city.length;b++) {
-                            button[city[b]].setBackground(Color.WHITE);
-                        };
-                    }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        for(int b = 0; b<city.length;b++) {
-                            areaColor(button[city[b]],cityStr);
-                        };
-                    }
-                });
-                button[city[b]].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if(cityStr=="인천광역시") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="제주도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="경기도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="충청북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="충청남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="전라북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="전라남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="강원도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="경상북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="경상남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }
-
-                    }
-                });
-
+                if(this.hashMap.get(cityStr)>95) button[city[b]].setBackground(Color.decode("#0d47a1"));
+                else if(this.hashMap.get(cityStr)>90)button[city[b]].setBackground(Color.decode("#1565c0"));
+                else if(this.hashMap.get(cityStr)>85)button[city[b]].setBackground(Color.decode("#1976d2"));
+                else if(this.hashMap.get(cityStr)>80)button[city[b]].setBackground(Color.decode("#1e88e5"));
+                else if(this.hashMap.get(cityStr)>75)button[city[b]].setBackground(Color.decode("#2196f3"));
+                else if(this.hashMap.get(cityStr)>70)button[city[b]].setBackground(Color.decode("#64b5f6"));
+                else if(this.hashMap.get(cityStr)>65)button[city[b]].setBackground(Color.decode("#90caf9"));
+                else if(this.hashMap.get(cityStr)>60)button[city[b]].setBackground(Color.decode("#bbdefb"));
+                else button[city[b]].setBackground(Color.decode("#e3f2fd"));
             }
         }
     }
-    private void intColor(UtilButton button,String cityStr) {
-        if(cityStr=="서울시") {
-            button.setBackground(new Color(174,25,50));
-        }else if(cityStr=="세종시") {
-            button.setBackground(new Color(185, 221, 250));
-        }else if(cityStr=="대전광역시") {
-            button.setBackground(new Color(210, 250, 221));
-        }else if(cityStr=="대구광역시") {
-            button.setBackground(new Color(69,121,189));
-        }else if(cityStr=="울산광역시") {
-            button.setBackground(new Color(9, 218, 146));
-        }else if(cityStr=="부산광역시") {
-            button.setBackground(new Color(222, 239, 255));
-        }
-    }
-    private void areaColor(UtilButton button, String cityStr) {
-        if(cityStr=="인천광역시") {
-            button.setBackground(new Color(0, 178, 169));
-        }else if(cityStr=="제주도") {
-            button.setBackground(new Color(245, 142, 7));
-        }else if(cityStr=="경기도") {
-            button.setBackground(new Color(22, 65, 148));
-        }else if(cityStr=="충청북도") {
-            button.setBackground(new Color(145, 237, 133));
-        }else if(cityStr=="충청남도") {
-            button.setBackground(new Color(203, 174, 245));
-        }else if(cityStr=="전라북도") {
-            button.setBackground(new Color(100, 167, 11));
-        }else if(cityStr=="전라남도") {
-            button.setBackground(new Color(247, 209, 23));
-        }else if(cityStr=="강원도") {
-            button.setBackground(new Color(214, 210, 196));
-        }else if(cityStr=="경상북도") {
-            button.setBackground(new Color(155, 228, 250));
-        }else if(cityStr=="경상남도") {
-            button.setBackground(new Color(250, 197, 185));
-        }
-    }
-
 }

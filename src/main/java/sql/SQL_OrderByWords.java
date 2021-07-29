@@ -12,6 +12,8 @@ public class SQL_OrderByWords {
     ResultSet resultSet;
     ArrayList<String> list = new ArrayList<>();
     HashMap<String,String> data = new HashMap<>();
+    HashMap<String,Integer> area = new HashMap<>();
+
     String order;
 
     public SQL_OrderByWords(String whose,String sqlStatement) throws SQLException {
@@ -25,6 +27,7 @@ public class SQL_OrderByWords {
         conn = DriverManager.getConnection(url,"c##Class01","Class01");
 
         switch (sqlStatement){
+            case "area": order = "SELECT area,interest FROM area where whose = "+"'"+whose+"'"; break;
             case "desc": order = "SELECT word,count FROM "+whose+" ORDER BY count DESC FETCH NEXT 10 ROWS ONLY"; break;
             case "best": order = "SELECT word FROM "+whose+" where degree = 1"; break;
             case "worst": order = "SELECT word FROM "+whose+" where degree = 3"; break;
@@ -35,6 +38,9 @@ public class SQL_OrderByWords {
 
         if(sqlStatement=="desc")
             while (resultSet.next()){ data.put(resultSet.getString(1),resultSet.getString(2)); }
+        else if(sqlStatement=="area")
+            while (resultSet.next()){
+                area.put(resultSet.getString(1),resultSet.getInt(2)); }
         else
             while (resultSet.next()){ list.add(resultSet.getString(1)); }
         conn.close();
@@ -42,5 +48,6 @@ public class SQL_OrderByWords {
         pst.close();
     }
     public HashMap getText() {return data;}
+    public HashMap getArea() {return area;}
     public ArrayList getList() {return list;}
 }

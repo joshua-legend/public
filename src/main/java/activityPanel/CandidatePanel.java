@@ -18,8 +18,8 @@ public class CandidatePanel extends JPanel {
     TopPanel topPanel;
 
     ProfilePanel wordMapProfilePanel;
-    TwoButtonPanel TwoButtonPanel = new TwoButtonPanel();
-    MapPanel MapPanel = new MapPanel();
+    TwoButtonPanel twoButtonPanel = new TwoButtonPanel();
+    MapPanel mapPanel;
 
     InterestPanel interestPanel;
     JPanel nowPanel;
@@ -37,33 +37,34 @@ public class CandidatePanel extends JPanel {
         topPanel = new TopPanel(vo.getName(),TopPanel.NOTHINGLABEL);
         topPanel.backButton.addActionListener(new ActionButton());
         wordMapProfilePanel= new ProfilePanel(vo.getImage());
+        mapPanel = new MapPanel(vo.getName());
 
 
         add(topPanel);
         add(wordMapProfilePanel);
-        add(TwoButtonPanel);
+        add(twoButtonPanel);
         add(interestPanel);
 
-        TwoButtonPanel.snsButton.addMouseListener(new MouseAction());
-        TwoButtonPanel.mapButton.addMouseListener(new MouseAction());
+        twoButtonPanel.snsButton.addMouseListener(new MouseAction());
+        twoButtonPanel.mapButton.addMouseListener(new MouseAction());
 
     }
     class MouseAction extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
-            if(e.getSource()== TwoButtonPanel.snsButton){
-                TwoButtonPanel.selectButton("sns");
+            if(e.getSource()== twoButtonPanel.snsButton){
+                twoButtonPanel.selectButton("sns");
                 remove(nowPanel);
                 add(interestPanel);
                 nowPanel = interestPanel;
                 updateUI();
             }
-            if(e.getSource()== TwoButtonPanel.mapButton){
-                TwoButtonPanel.selectButton("map");
+            if(e.getSource()== twoButtonPanel.mapButton){
+                twoButtonPanel.selectButton("map");
                 remove(nowPanel);
-                add(MapPanel);
-                nowPanel = MapPanel;
+                add(mapPanel);
+                nowPanel = mapPanel;
                 updateUI();
             }
         }
