@@ -21,7 +21,17 @@ public class PoliticianData {
         map.put("홍준표",new PoliticianVO("홍준표","HONGJOONPYO",new ImageIcon("img/people/홍준표.png"), Party.국민의힘.getColor(), Party.국민의힘));
         map.put("유승민",new PoliticianVO("유승민","YOOSEUNGMIN",new ImageIcon("img/people/유승민.png"), Party.국민의힘.getColor(), Party.국민의힘));
         map.put("허경영",new PoliticianVO("허경영","HUHKYUNGYOUNG",new ImageIcon("img/people/허경영.png"), Party.국가혁명당.getColor(), Party.국가혁명당));
-        map.put("원희룡",new PoliticianVO("원희룡","KIMDOOKWAN",new ImageIcon("img/people/원희룡.png"), Party.국민의힘.getColor(), Party.국민의힘));
+        map.put("원희룡",new PoliticianVO("원희룡","WONHEEYOUNG",new ImageIcon("img/people/원희룡.png"), Party.국민의힘.getColor(), Party.국민의힘));
     }
 
 }
+/*
+*
+* CREATE TABLE KIMDOOKWAN
+(
+    time        DATE    NOT NULL,
+    interest    INT     NOT NULL,
+     PRIMARY KEY (time)
+)
+*
+* */

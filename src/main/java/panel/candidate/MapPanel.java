@@ -188,7 +188,6 @@ public class MapPanel extends JPanel {
                     public void mouseExited(MouseEvent e) {
                         for(int b = 0; b<city.length;b++) {
                             button[city[b]].setBackground(Color.WHITE);
-
                         };
                     }
                     @Override

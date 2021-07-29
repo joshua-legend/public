@@ -9,7 +9,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
 
-public class InterestPanel extends JPanel {
+public class LinePanel extends JPanel {
 
     BorderLayout layout = new BorderLayout();
 
@@ -21,7 +21,7 @@ public class InterestPanel extends JPanel {
             true,true,false);
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-    public InterestPanel(){
+    public LinePanel(){
         ChartPanel chartPanel = new ChartPanel(lineChart);
         chartPanel.setPreferredSize(new Dimension(480,420));
         setLayout(layout);

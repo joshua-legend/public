@@ -4,21 +4,20 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
+import sql.SQL_OrderByWords;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class snsInterestPanel extends JPanel {
+public class SNSInterestPanel extends JPanel {
 
     GridBagLayout layout = new GridBagLayout();
     GridBagConstraints constraints = new GridBagConstraints();
 
     GridLayout gridLayout = new GridLayout(4,1);
-
-    DefaultPieDataset dataset = new DefaultPieDataset();
-    JFreeChart chart = ChartFactory.createPieChart3D("Mobile Sales",dataset,true ,true,false);
-    final PiePlot3D plot = ( PiePlot3D ) chart.getPlot( );
-
+    SQL_OrderByWords sql_orderByWords_best,sql_orderByWords_worst;
 
     JPanel goodPanel = new JPanel(gridLayout);
     JPanel badPanel = new JPanel(gridLayout);
@@ -26,21 +25,30 @@ public class snsInterestPanel extends JPanel {
     JLabel bestLabel = new JLabel("긍정어 TOP3");
     JLabel worstLabel = new JLabel("부정어 TOP3");
 
-    InterestPanel jButton = new InterestPanel();
+    LinePanel linePanel = new LinePanel();
+    ArrayList bestList;
+    ArrayList worstList;
 
 
-    public snsInterestPanel(){
 
-        //TODO 여기서 하기
+    public SNSInterestPanel(String whose) throws SQLException {
+
         bestLabel.setHorizontalAlignment(JLabel.CENTER);
         worstLabel.setHorizontalAlignment(JLabel.CENTER);
         goodPanel.add(bestLabel);
         badPanel.add(worstLabel);
 
-
-        for(int i=0;i<3;i++){
-            goodPanel.add(new JLabel("1"));
-            badPanel.add(new JLabel("2"));
+        sql_orderByWords_best = new SQL_OrderByWords(whose,"best");
+        sql_orderByWords_worst=new SQL_OrderByWords(whose,"worst");
+        bestList = sql_orderByWords_best.getList();
+        worstList = sql_orderByWords_worst.getList();
+        for(int i=0;i<bestList.size();i++){
+            JLabel good = new JLabel(bestList.get(i).toString());
+            good.setHorizontalAlignment(JLabel.CENTER);
+            JLabel bad = new JLabel(bestList.get(i).toString());
+            bad.setHorizontalAlignment(JLabel.CENTER);
+            goodPanel.add(good);
+            badPanel.add(bad);
         }
 
 
@@ -52,15 +60,11 @@ public class snsInterestPanel extends JPanel {
         layout.setConstraints(badPanel,constraints);
         add(badPanel);
 
-
         controlConstraints(0,1,2,1);
-        layout.setConstraints(jButton,constraints);
-        add(jButton);
+        layout.setConstraints(linePanel,constraints);
+        add(linePanel);
 
-//        ChartPanel chartPanel = new ChartPanel(chart);
-//        chartPanel.setPreferredSize(new Dimension(480,420));
         setLayout(layout);
-//        add(BorderLayout.CENTER,chartPanel);
         setBounds(0,25,480,420);
     }
 

@@ -1,9 +1,9 @@
 package panel.candidate;
 
 import buttons.UtilButton;
-import panel.candidate.sns.snsInterestPanel;
-import panel.candidate.sns.snsPiePanel;
-import panel.candidate.sns.snsXYPanel;
+import panel.candidate.sns.SNSInterestPanel;
+import panel.candidate.sns.SNSPiePanel;
+import panel.candidate.sns.SNSXYPanel;
 import wordcloud.CloudViewerPanel;
 import wordcloud.WordCloud;
 
@@ -25,10 +25,9 @@ public class InterestPanel extends JPanel {
 
     public WordCloud wordCloud = new WordCloud();
     public CloudViewerPanel cloudViewerPanel;
-    public snsPiePanel snsPiePanel;
-    public snsInterestPanel snsInterestPanel;
-    public snsXYPanel snsXYPanel;
-    //todo 어레이리스트화
+    public SNSPiePanel snsPiePanel;
+    public SNSInterestPanel snsInterestPanel;
+    public SNSXYPanel snsXYPanel;
     public ArrayList<JPanel> jPanels = new ArrayList<>();
     public int now = 0;
 
@@ -36,9 +35,9 @@ public class InterestPanel extends JPanel {
 
         setLayout(layout);
         cloudViewerPanel = wordCloud.cloud(name);
-        snsPiePanel = new snsPiePanel(name);
-        snsInterestPanel = new snsInterestPanel();
-        snsXYPanel = new snsXYPanel();
+        snsPiePanel = new SNSPiePanel(name);
+        snsInterestPanel = new SNSInterestPanel(name);
+        snsXYPanel = new SNSXYPanel();
 
 
         jPanels.add(cloudViewerPanel);

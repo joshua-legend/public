@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class snsPiePanel extends JPanel {
+public class SNSPiePanel extends JPanel {
 
     BorderLayout layout = new BorderLayout();
 
@@ -27,11 +27,11 @@ public class snsPiePanel extends JPanel {
     final PiePlot3D plot = ( PiePlot3D ) chart.getPlot( );
 
 
-    public snsPiePanel(String whose) throws SQLException {
+    public SNSPiePanel(String whose) throws SQLException {
         chart.getTitle().setFont(font);
         chart.getLegend().setItemFont(font);
         plot.setLabelFont(font);
-        sql_orderByWords = new SQL_OrderByWords(whose);
+        sql_orderByWords = new SQL_OrderByWords(whose,"desc");
         hashMap =sql_orderByWords.getText();
         setDataset(hashMap);
         plot.setStartAngle( 270 );

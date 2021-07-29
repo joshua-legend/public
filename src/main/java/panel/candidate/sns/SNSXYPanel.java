@@ -15,11 +15,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 
-public class snsXYPanel extends JPanel {
+public class SNSXYPanel extends JPanel {
 
     BorderLayout layout = new BorderLayout();
 
-    public snsXYPanel(){
+    public SNSXYPanel(){
         XYZDataset dataset = createDataset();
 
         // Create chart
