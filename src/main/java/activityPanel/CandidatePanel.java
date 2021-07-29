@@ -11,63 +11,56 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class CandidatePanel extends JPanel {
 
     TopPanel topPanel;
 
     ProfilePanel wordMapProfilePanel;
-    ThreeButtonPanel ThreeButtonPanel = new ThreeButtonPanel();
+    TwoButtonPanel TwoButtonPanel = new TwoButtonPanel();
     MapPanel MapPanel = new MapPanel();
-    GooglePanel googlePanel = new GooglePanel();
-    YoutubePanel youtubePanel = new YoutubePanel();
 
-    JPanel nowPanel = googlePanel;
+    InterestPanel interestPanel;
+    JPanel nowPanel;
     PoliticialFactorData politicialFactorData = new PoliticialFactorData();
     PoliticianVO vo;
 
 
-    public CandidatePanel(PoliticianVO vo) throws IOException {
+    public CandidatePanel(PoliticianVO vo) throws IOException, SQLException {
+        setLayout(null);
 
         this.vo = vo;
-        setLayout(null);
+        interestPanel  = new InterestPanel(vo.getEng_name());
+        nowPanel =interestPanel;
 
         topPanel = new TopPanel(vo.getName(),TopPanel.NOTHINGLABEL);
         topPanel.backButton.addActionListener(new ActionButton());
-        add(topPanel);
-
         wordMapProfilePanel= new ProfilePanel(vo.getImage());
+
+
+        add(topPanel);
         add(wordMapProfilePanel);
+        add(TwoButtonPanel);
+        add(interestPanel);
 
-        add(ThreeButtonPanel);
-        add(googlePanel);
-
-
-        ThreeButtonPanel.googleButton.addMouseListener(new MouseAction());
-        ThreeButtonPanel.youtubeButton.addMouseListener(new MouseAction());
-        ThreeButtonPanel.mapButton.addMouseListener(new MouseAction());
+        TwoButtonPanel.snsButton.addMouseListener(new MouseAction());
+        TwoButtonPanel.mapButton.addMouseListener(new MouseAction());
 
     }
     class MouseAction extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
             super.mouseClicked(e);
-            if(e.getSource()== ThreeButtonPanel.googleButton){
-                ThreeButtonPanel.selectButton("google");
+            if(e.getSource()== TwoButtonPanel.snsButton){
+                TwoButtonPanel.selectButton("sns");
                 remove(nowPanel);
-                add(googlePanel);
-                nowPanel = googlePanel;
+                add(interestPanel);
+                nowPanel = interestPanel;
                 updateUI();
             }
-            if(e.getSource()== ThreeButtonPanel.youtubeButton){
-                ThreeButtonPanel.selectButton("youtube");
-                remove(nowPanel);
-                add(youtubePanel);
-                nowPanel = youtubePanel;
-                updateUI();
-            }
-            if(e.getSource()== ThreeButtonPanel.mapButton){
-                ThreeButtonPanel.selectButton("map");
+            if(e.getSource()== TwoButtonPanel.mapButton){
+                TwoButtonPanel.selectButton("map");
                 remove(nowPanel);
                 add(MapPanel);
                 nowPanel = MapPanel;

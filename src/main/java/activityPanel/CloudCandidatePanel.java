@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @Deprecated
 public class CloudCandidatePanel extends JPanel {
@@ -48,7 +49,7 @@ public class CloudCandidatePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             try {
                 PublicMindFrame.selectActivity(new CandidatePanel(vo));
-            } catch (IOException ioException) {
+            } catch (IOException | SQLException ioException) {
                 ioException.printStackTrace();
             }
         }

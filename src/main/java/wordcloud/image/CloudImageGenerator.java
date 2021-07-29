@@ -92,7 +92,7 @@ public class CloudImageGenerator {
     
     private Shape stringShape(Font font, FontMetrics fm, String word, Random rand) {
         int x = rand.nextInt(325)+25;
-        int y = rand.nextInt(350);
+        int y = rand.nextInt(350)+15;
         GlyphVector v = font.createGlyphVector(fm.getFontRenderContext(), word);
         AffineTransform at = new AffineTransform();
         at.translate(x, y);

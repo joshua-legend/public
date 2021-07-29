@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -105,7 +106,7 @@ public class PeopleChoose_PeoplePanel extends JPanel {
             PeopleButton peopleButton = (PeopleButton)e.getSource();
             try {
                 PublicMindFrame.selectActivity(new CandidatePanel(peopleButton.vo));
-            } catch (IOException ioException) {
+            } catch (IOException | SQLException ioException) {
                 ioException.printStackTrace();
             }
         }
