@@ -14,6 +14,7 @@ public class TwoButtonPanel extends JPanel {
     public UtilButton mapButton = new UtilButton("지도 데이터","#ffffff","#37474f");
 
 
+
     public TwoButtonPanel() {
         setLayout(new GridLayout(1,2));
         add(snsButton);

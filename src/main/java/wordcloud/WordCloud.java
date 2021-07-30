@@ -5,6 +5,8 @@ import sql.SQL_SelectWords;
 import wordcloud.image.CloudImageGenerator;
 import wordcloud.words.StringProcessor;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,21 +21,23 @@ public class WordCloud {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 400;
     public static final int PADDING = 30;
-    public static final String TEXT = "김두관.txt";
+    public static final String TEXT = "홍준표.txt";
     public static final String FILTER = "korean_filtering.txt";
 // 이낙연 오세훈 심상정 유승민 윤석열
 
-//    public static void main(String[] args) throws IOException {
-//        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
-//        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-//        new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
-//    }
+    public static void main(String[] args) throws IOException {
+        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
+        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
+        new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
+    }
 
     public CloudViewerPanel cloud(String str) throws IOException, SQLException {
         String text = new SQL_SelectWords(str).getText();
         StringProcessor strProcessor = new StringProcessor(text, filteringList(FILTER));
         CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-        return new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
+        CloudViewerPanel cloudViewerPanel = new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
+
+        return cloudViewerPanel;
     }
 
     private static String readFile(String path) throws IOException {

@@ -15,6 +15,7 @@ public class CloudViewerPanel extends JPanel {
         this.bi = bi;
     }
     public void paint(Graphics g) {
+        super.paint(g);
         g.drawImage(bi, 0, 0, null);
     }
 }

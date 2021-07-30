@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 
+@Deprecated
 public class SNSXYPanel extends JPanel {
 
     BorderLayout layout = new BorderLayout();

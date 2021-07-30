@@ -9,19 +9,24 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
 
-public class LinePanel extends JPanel {
+public class SNSLinePanel extends JPanel {
 
     BorderLayout layout = new BorderLayout();
 
     JFreeChart lineChart = ChartFactory.createLineChart(
-            "chartTitle",
-            "Years","Number of Schools",
+            "1년별 인지도 차드",
+            "Time","Popularity",
             createDataset(),
             PlotOrientation.VERTICAL,
             true,true,false);
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-    public LinePanel(){
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    Font font = new Font("돋움", Font.PLAIN, 15);
+
+
+    public SNSLinePanel(){
+        lineChart.getTitle().setFont(font);
+        lineChart.getLegend().setItemFont(font);
         ChartPanel chartPanel = new ChartPanel(lineChart);
         chartPanel.setPreferredSize(new Dimension(480,420));
         setLayout(layout);

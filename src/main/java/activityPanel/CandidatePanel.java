@@ -17,11 +17,11 @@ public class CandidatePanel extends JPanel {
 
     TopPanel topPanel;
 
-    ProfilePanel wordMapProfilePanel;
+    ProfilePanel profilePanel;
     TwoButtonPanel twoButtonPanel = new TwoButtonPanel();
     MapPanel mapPanel;
 
-    InterestPanel interestPanel;
+    DataPanel dataPanel;
     JPanel nowPanel;
     PoliticialFactorData politicialFactorData = new PoliticialFactorData();
     PoliticianVO vo;
@@ -31,19 +31,19 @@ public class CandidatePanel extends JPanel {
         setLayout(null);
 
         this.vo = vo;
-        interestPanel  = new InterestPanel(vo.getEng_name());
-        nowPanel =interestPanel;
+        dataPanel = new DataPanel(vo.getEng_name());
+        nowPanel = dataPanel;
 
         topPanel = new TopPanel(vo.getName(),TopPanel.NOTHINGLABEL);
         topPanel.backButton.addActionListener(new ActionButton());
-        wordMapProfilePanel= new ProfilePanel(vo.getImage());
+        profilePanel = new ProfilePanel(vo.getImage(),vo.getParty().toString(),vo.getStatus());
+
         mapPanel = new MapPanel(vo.getName());
 
-
         add(topPanel);
-        add(wordMapProfilePanel);
+        add(profilePanel);
+        add(dataPanel);
         add(twoButtonPanel);
-        add(interestPanel);
 
         twoButtonPanel.snsButton.addMouseListener(new MouseAction());
         twoButtonPanel.mapButton.addMouseListener(new MouseAction());
@@ -56,8 +56,8 @@ public class CandidatePanel extends JPanel {
             if(e.getSource()== twoButtonPanel.snsButton){
                 twoButtonPanel.selectButton("sns");
                 remove(nowPanel);
-                add(interestPanel);
-                nowPanel = interestPanel;
+                add(dataPanel);
+                nowPanel = dataPanel;
                 updateUI();
             }
             if(e.getSource()== twoButtonPanel.mapButton){

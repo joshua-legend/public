@@ -10,7 +10,6 @@ import sql.SQL_OrderByWords;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -20,7 +19,7 @@ public class SNSPiePanel extends JPanel {
 
     DefaultPieDataset dataset = new DefaultPieDataset();
     JFreeChart chart = ChartFactory.createPieChart3D("the words that comes to mind",dataset,true ,true,false);
-    SQL_OrderByWords sql_orderByWords;
+    SQL_OrderByWords sql_positive, sql_negative;
     HashMap hashMap;
 
     Font font = new Font("돋움", Font.PLAIN, 15);
@@ -31,9 +30,10 @@ public class SNSPiePanel extends JPanel {
         chart.getTitle().setFont(font);
         chart.getLegend().setItemFont(font);
         plot.setLabelFont(font);
-        sql_orderByWords = new SQL_OrderByWords(whose,"desc");
-        hashMap =sql_orderByWords.getText();
-        setDataset(hashMap);
+        sql_positive = new SQL_OrderByWords(whose,"total_positive");
+        sql_negative = new SQL_OrderByWords(whose,"total_negative");
+        dataset.setValue("긍정어", sql_positive.getPostiveNum());
+        dataset.setValue("부정어", sql_negative.getNegativeNum());
         plot.setStartAngle( 270 );
         plot.setForegroundAlpha( 0.60f );
         plot.setInteriorGap( 0.02 );
@@ -43,13 +43,4 @@ public class SNSPiePanel extends JPanel {
         add(BorderLayout.CENTER,chartPanel);
         setBounds(0,25,480,420);
     }
-
-    void setDataset(HashMap hashMap){
-        Iterator<String> keys = hashMap.keySet().iterator();
-        while( keys.hasNext() ){
-            String key = keys.next();
-            dataset.setValue(key, Double.parseDouble((String) hashMap.get(key)));
-        }
-    }
-
 }

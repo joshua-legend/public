@@ -6,14 +6,16 @@ import java.awt.*;
 public class ProfilePanel extends JPanel {
 
     JLabel image = new JLabel();
-    JLabel keyword = new JLabel("234");
-    JLabel history = new JLabel("국민의힘 대표");
+    JLabel keyword = new JLabel();
+    JLabel history = new JLabel();
 
     GridBagLayout layout = new GridBagLayout();
     GridBagConstraints constraints = new GridBagConstraints();
 
-    public ProfilePanel(ImageIcon imageIcon) {
+    public ProfilePanel(ImageIcon imageIcon,String key, String his) {
 
+        this.keyword.setText(key);
+        this.history.setText(his);
         constraints.weightx =1;
         constraints.weighty =1;
         constraints.fill = GridBagConstraints.BOTH;
