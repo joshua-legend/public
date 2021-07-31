@@ -14,10 +14,12 @@ public class SimulationPanel extends JPanel {
     }
 
     private void test(int google,int view,int sub,int ratio) throws SQLException {
-        HashMap finalHashmap = new SQL_Math(google,view,sub,ratio).getHashMap();
-        HashMap deaguHashMap = new SQL_Area(finalHashmap,"대구광역시").getHashMap();
-
-
+        HashMap percent_foreach_Hashmap = new SQL_Math(google,view,sub,ratio).getHashMap();
+        System.out.println(percent_foreach_Hashmap);
+        HashMap<String, HashMap> totalHashmap = new SQL_Area(percent_foreach_Hashmap).getHashMap();
+        System.out.println(totalHashmap);
+        HashMap A = new SQL_Area(percent_foreach_Hashmap).getRankHashMap();
+        System.out.println(A);
 
     }
 }
