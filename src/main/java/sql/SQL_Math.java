@@ -40,7 +40,6 @@ public class SQL_Math {
             hashMap.put(word,googleTotal+viewsTotal+subTotal+ratioTotal);
         }
 
-        int t = 0;
         while (resultSet1.next()){
             String word = resultSet1.getString(1);
             int sum = hashMap.get(word);

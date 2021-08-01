@@ -29,6 +29,8 @@ public class DataPanel extends JPanel {
     public UtilButton previousButton = new UtilButton("Previous","#e5ffff","#37474f");
 
     public WordCloud wordCloud = new WordCloud();
+    public WordCloud wordCloud1 = new WordCloud();
+
     public CloudViewerPanel positivePanel,negativePanel;
     public SNSPiePanel snsPiePanel;
     public SNSTop7Panel snsTop7Panel;
@@ -40,7 +42,7 @@ public class DataPanel extends JPanel {
 
         setLayout(layout);
         positivePanel = wordCloud.cloud(name+"_PO");
-        negativePanel = wordCloud.cloud(name+"_NA");
+        negativePanel = wordCloud1.cloud(name+"_NA");
 
         snsPiePanel = new SNSPiePanel(name);
         snsTop7Panel = new SNSTop7Panel(name);

@@ -21,7 +21,7 @@ public class WordCloud {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 400;
     public static final int PADDING = 30;
-    public static final String TEXT = "홍준표.txt";
+    public static final String TEXT = "이재명.txt";
     public static final String FILTER = "korean_filtering.txt";
 // 이낙연 오세훈 심상정 유승민 윤석열
 

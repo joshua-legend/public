@@ -36,6 +36,11 @@ public class SQL_Area {
     HashMap<String,HashMap> totalHashMap = new HashMap<>();
     HashMap<String,Integer> rankHashMap = new HashMap<>();
 
+
+
+
+
+
     public SQL_Area(HashMap peopleMap) throws SQLException {
 
         try {
@@ -66,10 +71,12 @@ public class SQL_Area {
                 if(result<0) result=0;
                 hashMap.put(resultSet.getString(1),result);
 
-                if(!rankHashMap.containsKey(resultSet.getString(1)))
+                if(!rankHashMap.containsKey(resultSet.getString(1))){
                     rankHashMap.put(resultSet.getString(1),result);
-                else
+                }
+                else{
                     rankHashMap.put(resultSet.getString(1),rankHashMap.get(resultSet.getString(1))+result);
+                }
             }
             totalHashMap.put(key,hashMap);
         }
