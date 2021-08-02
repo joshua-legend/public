@@ -1,4 +1,4 @@
-package main.test;
+package simulation;
 
 
 import java.awt.Graphics;
@@ -23,11 +23,12 @@ public class NumberThread extends JPanel implements Runnable{
     public void run() {
         try {
             while(true) {
-                Thread.sleep(990);
+                Thread.sleep(1000);
                 imgNumber--;
                 repaint();
                 if(imgNumber==0) {
                     numberCheck= true;
+                    break;
                 }
             }
 

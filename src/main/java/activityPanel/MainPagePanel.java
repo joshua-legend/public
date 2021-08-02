@@ -1,5 +1,7 @@
 package activityPanel;
 
+import simulation.SimulationPanelMain;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -30,11 +32,7 @@ public class MainPagePanel extends JPanel {
             }
             //TODO 가상프로그램 패널 넣기
             if(e.getX()>65 && e.getX()<265 && e.getY()>360 && e.getY()<490){
-                try {
-                    PublicMindFrame.selectActivity(new SimulationPanel());
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+
             }
         }
     }

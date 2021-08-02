@@ -1,5 +1,7 @@
 package activityPanel;
 
+import simulation.SimulationPanelMain;
+
 import javax.swing.*;
 import java.awt.*;
 

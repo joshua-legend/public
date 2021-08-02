@@ -1,4 +1,4 @@
-package main.test;
+package simulation;
 
 import javax.swing.ImageIcon;
 
@@ -9,21 +9,12 @@ public class Peple_SetingData {
     double candidatePercentage;
     ImageIcon icon;
     ImageIcon backgroundImage;
-
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-    //후보 인물 이미지 연결 해주시면 됩니다.
-
     public Peple_SetingData() {
 
     }
     public void peple(String name,double num) {
         if(name.equals("이재명")){
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/blue_white.png");
             candidateName=name;
             candidateParty="더불어민주당";
@@ -31,7 +22,7 @@ public class Peple_SetingData {
             symbolNumber="1";
         }
         else if(name.equals("이낙연")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/blue_white.png");
             candidateName=name;
             candidateParty="더불어민주당";
@@ -39,39 +30,39 @@ public class Peple_SetingData {
             symbolNumber="1";
         }
         else if(name.equals("정세균")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/blue_white.png");
             candidateName=name;
             candidateParty="더불어민주당";
             candidatePercentage=num;
             symbolNumber="1";
         }
-        else if(name.equals("추미애")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
-            backgroundImage = new ImageIcon("party_name_color/blue_white.png");
+        else if(name.equals("허경영")) {
+            icon = new ImageIcon("img/people/"+name+".png");
+            backgroundImage = new ImageIcon("party_name_color/darkRed_white.png");
             candidateName=name;
-            candidateParty="더불어민주당";
+            candidateParty="국가혁명당";
             candidatePercentage=num;
-            symbolNumber="1";
+            symbolNumber="8";
         }
         else if(name.equals("김두관")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/blue_white.png");
             candidateName=name;
             candidateParty="더불어민주당";
             candidatePercentage=num;
             symbolNumber="1";
         }
-        else if(name.equals("박용진")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+        else if(name.equals("원희룡")) {
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/blue_white.png");
             candidateName=name;
-            candidateParty="더불어민주당";
+            candidateParty="국민의힘";
             candidatePercentage=num;
-            symbolNumber="1";
+            symbolNumber="2";
         }
-        else if(name.equals("이준석")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+        else if(name.equals("유승민")) {
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/red_white.png");
             candidateName=name;
             candidateParty="국민의힘";
@@ -79,7 +70,7 @@ public class Peple_SetingData {
             symbolNumber="2";
         }
         else if(name.equals("홍준표")) {
-            icon = new ImageIcon("party_name_color/puple_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/red_white.png");
             candidateName=name;
             candidateParty="국민의힘";
@@ -87,7 +78,7 @@ public class Peple_SetingData {
             symbolNumber="2";
         }
         else if(name.equals("최재형")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/red_white.png");
             candidateName=name;
             candidateParty="국민의힘";
@@ -95,7 +86,7 @@ public class Peple_SetingData {
             symbolNumber="2";
         }
         else if(name.equals("윤석열")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/red_white.png");
             candidateName=name;
             candidateParty="국민의힘";
@@ -104,7 +95,7 @@ public class Peple_SetingData {
         }
 
         else if(name.equals("심상정")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/yellow_black.png");
             candidateName=name;
             candidateParty="정의당";
@@ -112,7 +103,7 @@ public class Peple_SetingData {
             symbolNumber="3";
         }
         else if(name.equals("안철수")) {
-            icon = new ImageIcon("party_name_color/blue_white.png");
+            icon = new ImageIcon("img/people/"+name+".png");
             backgroundImage = new ImageIcon("party_name_color/orange_white.png");
             candidateName=name;
             candidateParty="국민의당";

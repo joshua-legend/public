@@ -1,9 +1,10 @@
-package main.test;
+package simulation;
 
 
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class GetPercentage extends JPanel {
-    public String[] percent;
+    public int[] percent;
     public JButton btn;
 
     private JLabel nameLabel;
@@ -30,30 +31,25 @@ public class GetPercentage extends JPanel {
         setPanel();
     }
     void getPercent() {
-
-        percent = new String[4];
-
-        for(int i=0;i<percent.length;i++) {
-            if(!percentage[i].getText().equals("")) {
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                percent[i]= percentage[i].getText();
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                // 4가지의 퍼센트를 가져가는 부분
-                number+=Integer.parseInt(percent[i]);
+        try {
+            percent = new int[4];
+            SimulationCar sc = new SimulationCar();
+            for(int i=0;i<percent.length;i++) {
+                if(!percentage[i].getText().equals("")) {
+                    percent[i]= Integer.parseInt(percentage[i].getText());
+                    number+=percent[i];
+                }
             }
-        }
-        if(number==100) {
-            check = true;
-        }else {
-            check = false;
-            JOptionPane.showMessageDialog(this, "100%가 아닙니다.");
+            if(number==100) {
+                sc.test(percent[0],percent[1],percent[2],percent[3]);
+                check = true;
+            }else {
+                check = false;
+                number=0;
+                JOptionPane.showMessageDialog(this, "100%가 아닙니다.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     private void setPanel() {
@@ -68,7 +64,7 @@ public class GetPercentage extends JPanel {
         add(backgroundImage);
     }
     private void titleLabel() {
-        font = new Font("맑은 고딕",Font.PLAIN,20);
+        font = new Font("맑은 고딕",Font.PLAIN,25);
         UIManager.put("OptionPane.messageFont",font);
         nameLabel = new JLabel();
         nameLabel.setFont(font);

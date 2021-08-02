@@ -19,7 +19,7 @@ public class SNSLinePanel extends JPanel {
     public SNSLinePanel(String name) throws SQLException {
         JFreeChart lineChart = ChartFactory.createLineChart(
                 "1년별 인지도 차드",
-                "Time","Popularity",
+                "2020~2021","Search Percentage",
                 createDataset(name),
                 PlotOrientation.VERTICAL,
                 true,true,false);
