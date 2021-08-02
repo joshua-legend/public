@@ -23,7 +23,6 @@ public class CandidatePanel extends JPanel {
 
     DataPanel dataPanel;
     JPanel nowPanel;
-    PoliticialFactorData politicialFactorData = new PoliticialFactorData();
     PoliticianVO vo;
 
 

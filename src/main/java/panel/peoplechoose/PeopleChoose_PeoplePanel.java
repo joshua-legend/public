@@ -51,6 +51,7 @@ public class PeopleChoose_PeoplePanel extends JPanel {
         datas.add(fifth);
         datas.add(sixth);
         Arrays.sort(names);
+        sortByParty();
         setLayout(gridLayout);
         setBounds(0,30,490,650);
     }

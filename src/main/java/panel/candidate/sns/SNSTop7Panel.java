@@ -19,9 +19,8 @@ public class SNSTop7Panel extends JPanel {
     JLabel bestLabel = new JLabel("긍정어 TOP7");
     JLabel worstLabel = new JLabel("부정어 TOP7");
 
-    Font font = new Font("",Font.BOLD,30);
+    Font font = new Font("UhBee ZZIBA",Font.BOLD,30);
 
-    SNSLinePanel SNSLinePanel = new SNSLinePanel();
     ArrayList bestList;
     ArrayList worstList;
 
@@ -33,8 +32,8 @@ public class SNSTop7Panel extends JPanel {
 
         bestLabel.setFont(font);
         worstLabel.setFont(font);
-        bestLabel.setForeground(Color.decode("#c62828"));
-        worstLabel.setForeground(Color.decode("#c62828"));
+        bestLabel.setForeground(Color.decode("#ff77a9"));
+        worstLabel.setForeground(Color.decode("#4fc3f7"));
         bestLabel.setHorizontalAlignment(JLabel.CENTER);
         worstLabel.setHorizontalAlignment(JLabel.CENTER);
 
@@ -59,8 +58,8 @@ public class SNSTop7Panel extends JPanel {
             bad.setOpaque(false);
             good.setFont(font);
             bad.setFont(font);
-            good.setForeground(Color.decode("#c62828"));
-            bad.setForeground(Color.decode("#c62828"));
+            good.setForeground(Color.decode("#ff77a9"));
+            bad.setForeground(Color.decode("#4fc3f7"));
             goodPanel.add(good);
             badPanel.add(bad);
         }

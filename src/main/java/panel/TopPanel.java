@@ -19,7 +19,7 @@ public class TopPanel extends JPanel {
     JLabel nothingLabel2 = new JLabel(" ");
 
     UtilButton backButton1 = new UtilButton(" ","#64b5f6","#ffffff");
-    String style[] = {"정당별", "이름별", "나이별"};
+    String style[] = {"정당별", "이름별"};
     public JComboBox<String> selectBox = new JComboBox<>(style);
     JLabel nothingLabel3 = new JLabel(" ");
 

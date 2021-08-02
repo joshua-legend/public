@@ -37,10 +37,6 @@ public class SQL_Area {
     HashMap<String,Integer> rankHashMap = new HashMap<>();
 
 
-
-
-
-
     public SQL_Area(HashMap peopleMap) throws SQLException {
 
         try {

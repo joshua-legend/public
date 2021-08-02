@@ -46,7 +46,7 @@ public class DataPanel extends JPanel {
 
         snsPiePanel = new SNSPiePanel(name);
         snsTop7Panel = new SNSTop7Panel(name);
-        SNSLinePanel = new SNSLinePanel();
+        SNSLinePanel = new SNSLinePanel(name);
 
         jPanels.add(positivePanel);
         jPanels.add(snsPiePanel);
