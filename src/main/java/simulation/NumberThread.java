@@ -1,6 +1,8 @@
 package simulation;
 
 
+import activityPanel.MainPagePanel;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -28,6 +30,8 @@ public class NumberThread extends JPanel implements Runnable{
                 repaint();
                 if(imgNumber==0) {
                     numberCheck= true;
+                    MainPagePanel.simulationPanelMain.dispose();
+                    new SimulationResultFrame();
                     break;
                 }
             }

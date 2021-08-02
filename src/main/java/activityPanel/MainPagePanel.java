@@ -1,6 +1,7 @@
 package activityPanel;
 
 import simulation.SimulationPanelMain;
+import simulation.SimulationResultFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 public class MainPagePanel extends JPanel {
 
     Image mainImage = new ImageIcon("img/background/mainpagebackground.png").getImage();
+    public static SimulationPanelMain simulationPanelMain;
 
     public MainPagePanel() {
         setLayout(null);
@@ -30,8 +32,8 @@ public class MainPagePanel extends JPanel {
             if(e.getX()>265 && e.getX()<465 && e.getY()>360 && e.getY()<490){
                 PublicMindFrame.selectActivity(new PeopleChoosePanel());
             }
-            //TODO 가상프로그램 패널 넣기
             if(e.getX()>65 && e.getX()<265 && e.getY()>360 && e.getY()<490){
+                simulationPanelMain = new SimulationPanelMain();
 
             }
         }

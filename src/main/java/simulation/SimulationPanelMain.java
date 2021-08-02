@@ -21,7 +21,8 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
         setSize(500,700);
         onePanel();
         setVisible(true);
-        panelNext();
+
+//        panelNext();
     }
     private void onePanel() {
         gp = new GetPercentage();
@@ -41,6 +42,7 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
         gp.setVisible(false);
         nt = new NumberThread();
         add(nt);
+
     }
     private void panelNext() {
         while(!NumberThread.numberCheck){
@@ -59,7 +61,4 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
             }
         }
     }
-//    public static void main(String[] args) {
-//        new SimulationPanelMain();
-//    }
 }
