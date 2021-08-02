@@ -9,6 +9,8 @@ public class ProfilePanel extends JPanel {
     JLabel keyword = new JLabel();
     JLabel history = new JLabel();
 
+    Font font = new Font("UhBee ZZIBA",Font.PLAIN,20);
+
     GridBagLayout layout = new GridBagLayout();
     GridBagConstraints constraints = new GridBagConstraints();
 
@@ -28,11 +30,13 @@ public class ProfilePanel extends JPanel {
 
         controlConstraints(1,0,1,1);
         keyword.setHorizontalAlignment(JLabel.CENTER);
+        keyword.setFont(font);
         layout.setConstraints(keyword,constraints);
         add(keyword);
 
         controlConstraints(1,1,1,1);
         history.setHorizontalAlignment(JLabel.CENTER);
+        history.setFont(font);
         layout.setConstraints(history,constraints);
         add(history);
 

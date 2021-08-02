@@ -14,16 +14,28 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.HashMap;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class MapPanel extends JPanel {
     private int i;
     SQL_OrderByWords sql_orderByWords;
     HashMap<String,Integer> hashMap;
 
+    private final String first = "#0077c2";
+    private final String second = "#42a5f5";
+    private final String third = "#80d6ff";
+    private final String fourth = "#90caf9";
+    private final String fifth = "#e1f5fe";
+    private final String sixth = "#fbe9e7";
+    private final String seventh = "#ffab91";
+    private final String eighth = "#ff8a65";
+    private final String ninth = "#ff7043";
+
+
     public MapPanel(String whose) throws SQLException {
         sql_orderByWords = new SQL_OrderByWords(whose,"area");
         hashMap=sql_orderByWords.getArea();
+        System.out.println(hashMap);
         btnPanel();
         setBounds(0,200,500,480);
     }
@@ -153,15 +165,15 @@ public class MapPanel extends JPanel {
     private void eventSetInt(UtilButton[] button,int city,String cityStr) {
         if(i==city) {
             button[city].setToolTipText(cityStr);
-            if(this.hashMap.get(cityStr)>95) button[city].setBackground(Color.decode("#0d47a1"));
-            else if(this.hashMap.get(cityStr)>90)button[city].setBackground(Color.decode("#1565c0"));
-            else if(this.hashMap.get(cityStr)>85)button[city].setBackground(Color.decode("#1976d2"));
-            else if(this.hashMap.get(cityStr)>80)button[city].setBackground(Color.decode("#1e88e5"));
-            else if(this.hashMap.get(cityStr)>75)button[city].setBackground(Color.decode("#2196f3"));
-            else if(this.hashMap.get(cityStr)>70)button[city].setBackground(Color.decode("#64b5f6"));
-            else if(this.hashMap.get(cityStr)>65)button[city].setBackground(Color.decode("#90caf9"));
-            else if(this.hashMap.get(cityStr)>60)button[city].setBackground(Color.decode("#bbdefb"));
-            else button[city].setBackground(Color.decode("#e3f2fd"));
+            if(this.hashMap.get(cityStr)>95) button[city].setBackground(Color.decode(first));
+            else if(this.hashMap.get(cityStr)>90)button[city].setBackground(Color.decode(second));
+            else if(this.hashMap.get(cityStr)>85)button[city].setBackground(Color.decode(third));
+            else if(this.hashMap.get(cityStr)>80)button[city].setBackground(Color.decode(fourth));
+            else if(this.hashMap.get(cityStr)>75)button[city].setBackground(Color.decode(fifth));
+            else if(this.hashMap.get(cityStr)>70)button[city].setBackground(Color.decode(sixth));
+            else if(this.hashMap.get(cityStr)>65)button[city].setBackground(Color.decode(seventh));
+            else if(this.hashMap.get(cityStr)>60)button[city].setBackground(Color.decode(eighth));
+            else button[city].setBackground(Color.decode(ninth));
         }
     }
     private void eventSetArray(UtilButton[] button,int[] city,String cityStr) {
@@ -169,15 +181,15 @@ public class MapPanel extends JPanel {
         for(int b = 0; b<city.length;b++) {
             if(i==city[b]) {
                 button[city[b]].setToolTipText(cityStr);
-                if(this.hashMap.get(cityStr)>95) button[city[b]].setBackground(Color.decode("#0d47a1"));
-                else if(this.hashMap.get(cityStr)>90)button[city[b]].setBackground(Color.decode("#1565c0"));
-                else if(this.hashMap.get(cityStr)>85)button[city[b]].setBackground(Color.decode("#1976d2"));
-                else if(this.hashMap.get(cityStr)>80)button[city[b]].setBackground(Color.decode("#1e88e5"));
-                else if(this.hashMap.get(cityStr)>75)button[city[b]].setBackground(Color.decode("#2196f3"));
-                else if(this.hashMap.get(cityStr)>70)button[city[b]].setBackground(Color.decode("#64b5f6"));
-                else if(this.hashMap.get(cityStr)>65)button[city[b]].setBackground(Color.decode("#90caf9"));
-                else if(this.hashMap.get(cityStr)>60)button[city[b]].setBackground(Color.decode("#bbdefb"));
-                else button[city[b]].setBackground(Color.decode("#e3f2fd"));
+                if(this.hashMap.get(cityStr)>95) button[city[b]].setBackground(Color.decode(first));
+                else if(this.hashMap.get(cityStr)>90)button[city[b]].setBackground(Color.decode(second));
+                else if(this.hashMap.get(cityStr)>85)button[city[b]].setBackground(Color.decode(third));
+                else if(this.hashMap.get(cityStr)>80)button[city[b]].setBackground(Color.decode(fourth));
+                else if(this.hashMap.get(cityStr)>75)button[city[b]].setBackground(Color.decode(fifth));
+                else if(this.hashMap.get(cityStr)>70)button[city[b]].setBackground(Color.decode(sixth));
+                else if(this.hashMap.get(cityStr)>65)button[city[b]].setBackground(Color.decode(seventh));
+                else if(this.hashMap.get(cityStr)>60)button[city[b]].setBackground(Color.decode(eighth));
+                else button[city[b]].setBackground(Color.decode(ninth));
             }
         }
     }

@@ -6,6 +6,7 @@ import data.PoliticianVO;
 import panel.candidate.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -19,6 +20,8 @@ public class CandidatePanel extends JPanel {
 
     ProfilePanel profilePanel;
     TwoButtonPanel twoButtonPanel = new TwoButtonPanel();
+
+    JPanel map_explainPanel = new JPanel();
     MapPanel mapPanel;
 
     DataPanel dataPanel;

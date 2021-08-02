@@ -16,7 +16,7 @@ public class ColorCombinations {
     private final Color[] scheme;
     
     public ColorCombinations(String[] colors) {
-        this(colors, Color.decode("#cfd8dc"));
+        this(colors, Color.decode("#e3f2fd"));
     }
     
     public ColorCombinations(String[] colors, Color background) {
