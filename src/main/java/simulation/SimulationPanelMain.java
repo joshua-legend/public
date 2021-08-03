@@ -21,8 +21,6 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
         setSize(500,700);
         onePanel();
         setVisible(true);
-
-//        panelNext();
     }
     private void onePanel() {
         gp = new GetPercentage();
@@ -42,23 +40,5 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
         gp.setVisible(false);
         nt = new NumberThread();
         add(nt);
-
-    }
-    private void panelNext() {
-        while(!NumberThread.numberCheck){
-            try {
-                Thread.sleep(4200);
-            } catch (Exception ea) {
-                ea.printStackTrace();
-            }
-            if(NumberThread.numberCheck) {
-                nt.setVisible(false);
-                setVisible(false);
-                smo = new Simulation_Menu_One();
-                add(smo);
-                setVisible(true);
-                break;
-            }
-        }
     }
 }

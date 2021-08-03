@@ -35,7 +35,7 @@ public class GetPercentage extends JPanel {
     void getPercent() {
         try {
             percent = new int[4];
-            SimulationCar sc = new SimulationCar();
+            SimulationCalculation sc = new SimulationCalculation();
             for(int i=0;i<percent.length;i++) {
                 if(!percentage[i].getText().equals("")) {
                     percent[i]= Integer.parseInt(percentage[i].getText());

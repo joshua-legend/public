@@ -1,20 +1,20 @@
 package simulation;
 
 import buttons.UtilButton;
+import sql.SQL_Area;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Simulation_Map extends JPanel {
     private int i;
+
     public Simulation_Map(){
         btnPanel();
     }
@@ -38,42 +38,52 @@ public class Simulation_Map extends JPanel {
         if(i>=0 && i<9 || i>=10 && i<21) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=27 && i<36 || i>=44 && i<51) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=60 && i<67 || i>=77 && i<84) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=93 && i<99 || i>=110 && i<114) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=126 && i<132 || i>=142 && i<148) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=157 && i<164 || i>=174 && i<181) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=190 && i<196 || i>=206 && i<211) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=221 && i<226 || i>=234 && i<243 || i>=247 && i<249) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=251 && i<259 || i>=261 && i<262 || i>=263 && i<274) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
         if(i>=276 && i<277 || i>=278 && i<307) {
             button[i].setBorderPainted(false);
             button[i].setEnabled(false);
+            button[i].setVisible(false);
         }
     }
     private void btnEventSetArea(JButton[] button) {
@@ -111,7 +121,7 @@ public class Simulation_Map extends JPanel {
         int daegu= 186;
         int ulsan= 205;
         int busan= 220;
-        String seoulStr="서울시";
+        String seoulStr="서울특별시";
         String sejongStr="세종시";
         String daejeonStr="대전광역시";
         String daeguStr="대구광역시";
@@ -127,7 +137,7 @@ public class Simulation_Map extends JPanel {
         int[] incheon= {67,68};
         int[] jeju= {307,308,309};
         String incheonStr = "인천광역시";
-        String jejuStr = "제주도";
+        String jejuStr = "제주특별자치도";
         eventSetArray(button,incheon,incheonStr);
         eventSetArray(button,jeju,jejuStr);
     }
@@ -149,18 +159,18 @@ public class Simulation_Map extends JPanel {
             button[city].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(cityStr=="서울시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                    if(cityStr=="서울특별시") {
+                        new Simulation_Pie_Frame("서울특별시");
                     }else if(cityStr=="세종시") {
                         System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
                     }else if(cityStr=="대전광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                        new Simulation_Pie_Frame("대전광역시");
                     }else if(cityStr=="대구광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                        new Simulation_Pie_Frame("대구광역시");
                     }else if(cityStr=="울산광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                        new Simulation_Pie_Frame("울산광역시");
                     }else if(cityStr=="부산광역시") {
-                        System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                        new Simulation_Pie_Frame("부산광역시");
                     }
                 }
             });
@@ -176,7 +186,6 @@ public class Simulation_Map extends JPanel {
                     public void mouseExited(MouseEvent e) {
                         for(int b = 0; b<city.length;b++) {
                             button[city[b]].setBackground(Color.WHITE);
-
                         };
                     }
                     @Override
@@ -190,25 +199,25 @@ public class Simulation_Map extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(cityStr=="인천광역시") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
-                        }else if(cityStr=="제주도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("인천광역시");
+                        }else if(cityStr=="제주특별자치도") {
+                            new Simulation_Pie_Frame("제주특별자치도");
                         }else if(cityStr=="경기도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("경기도");
                         }else if(cityStr=="충청북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("충청북도");
                         }else if(cityStr=="충청남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("충청남도");
                         }else if(cityStr=="전라북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("전라북도");
                         }else if(cityStr=="전라남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("전라남도");
                         }else if(cityStr=="강원도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("강원도");
                         }else if(cityStr=="경상북도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("경상북도");
                         }else if(cityStr=="경상남도") {
-                            System.out.println("테스트 출력 --------->>> "+cityStr+" 선택");
+                            new Simulation_Pie_Frame("경상남도");
                         }
 
                     }
@@ -218,7 +227,7 @@ public class Simulation_Map extends JPanel {
         }
     }
     private void intColor(JButton button,String cityStr) {
-        if(cityStr=="서울시") {
+        if(cityStr=="서울특별시") {
             button.setBackground(new Color(174,25,50));
         }else if(cityStr=="세종시") {
             button.setBackground(new Color(185, 221, 250));
@@ -235,7 +244,7 @@ public class Simulation_Map extends JPanel {
     private void areaColor(JButton button, String cityStr) {
         if(cityStr=="인천광역시") {
             button.setBackground(new Color(0, 178, 169));
-        }else if(cityStr=="제주도") {
+        }else if(cityStr=="제주특별자치도") {
             button.setBackground(new Color(245, 142, 7));
         }else if(cityStr=="경기도") {
             button.setBackground(new Color(22, 65, 148));

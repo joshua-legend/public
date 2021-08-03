@@ -18,10 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import activityPanel.MainPagePanel;
-import activityPanel.PublicMindFrame;
 import buttons.UtilButton;
-import com.sun.jdi.Value;
 
 
 public class Simulation_Menu_One extends JPanel {
@@ -32,6 +29,8 @@ public class Simulation_Menu_One extends JPanel {
     private int number;
     private JPanel panelFirst  = new JPanel();
     private Simulation_Map simulation_map = new Simulation_Map();
+    public static Simulation_Frame simulation_frame;
+
 
     private JPanel btnPanel;
     private String[] nameRank = new String[3];
@@ -76,8 +75,16 @@ public class Simulation_Menu_One extends JPanel {
         Font font = new Font("맑은 고딕",Font.PLAIN,20);
         btnPanel = new JPanel();
         btnPanel.setBackground(Color.WHITE);
-        btnPanel.setLayout(new GridLayout(1,1));
+        btnPanel.setLayout(new GridLayout(1,2));
+
+        UtilButton resultBtn = new UtilButton("전체보기");
         btn = new UtilButton("종료");
+
+
+        resultBtn.setFont(font);
+        resultBtn.setFocusPainted(false);
+        buttonEvent(resultBtn);
+        btnPanel.add(resultBtn);
         btn.setFont(font);
         btn.setFocusPainted(false);
         buttonEvent(btn);
@@ -91,6 +98,9 @@ public class Simulation_Menu_One extends JPanel {
                 JButton button = (JButton)e.getSource();
                 if(button.getText().equals("종료")) {
                     NumberThread.simulationResultFrame.dispose();
+                }
+                if(button.getText().equals("전체보기")) {
+                    simulation_frame = new Simulation_Frame();
                 }
             }
         });
@@ -126,7 +136,7 @@ public class Simulation_Menu_One extends JPanel {
 
     }
     private void winnerSeting() {
-        List<Entry<String, Double>> list = new ArrayList<Entry<String,Double>>(SimulationCar.listHundred.entrySet());
+        List<Entry<String, Double>> list = new ArrayList<Entry<String,Double>>(SimulationCalculation.listHundred.entrySet());
 
         // 비교함수 Comparator를 사용하여 오름차순으로 정렬
         Collections.sort(list, new Comparator<Entry<String,Double>>() {
