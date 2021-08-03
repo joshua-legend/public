@@ -21,15 +21,15 @@ public class WordCloud {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 400;
     public static final int PADDING = 30;
-    public static final String TEXT = "유승민.txt";
+    public static final String TEXT = "asd.txt";
     public static final String FILTER = "korean_filtering.txt";
 // 이낙연 오세훈 심상정 유승민 윤석열
 
-//    public static void main(String[] args) throws IOException {
-//        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
-//        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
-//        new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
-//    }
+    public static void main(String[] args) throws IOException {
+        StringProcessor strProcessor = new StringProcessor(readFile(TEXT), filteringList(FILTER));
+        CloudImageGenerator generator = new CloudImageGenerator(WIDTH, HEIGHT, PADDING);
+        new CloudViewerPanel(generator.generateImage(strProcessor, System.currentTimeMillis()));
+    }
 
     public CloudViewerPanel cloud(String str) throws IOException, SQLException {
         String text = new SQL_SelectWords(str).getText();

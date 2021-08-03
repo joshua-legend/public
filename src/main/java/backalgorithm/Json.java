@@ -35,7 +35,7 @@ public class Json {
 
         if(!flag) textDisplay=" ";
 
-        File file = new File("D:\\politicsdata\\"+name+".txt");
+        File file = new File("D:\\"+name+".txt");
         FileWriter writer = null;
 
         if(file.exists()){
