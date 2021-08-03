@@ -21,6 +21,7 @@ public class Simulation_Pie_Frame extends JFrame {
         add(BorderLayout.CENTER,new Simulation_PiePanel(getVoteHashmap,city));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
+        setLocation(700,200);
         setSize(500,700);
         setVisible(true);
     }

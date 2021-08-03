@@ -18,6 +18,7 @@ public class SimulationPanelMain extends JFrame implements ActionListener{
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setBackground(Color.WHITE);
         setResizable(false);
+        setLocation(700,200);
         setSize(500,700);
         onePanel();
         setVisible(true);

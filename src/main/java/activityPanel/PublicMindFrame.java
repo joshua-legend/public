@@ -19,6 +19,7 @@ public class PublicMindFrame extends JFrame {
     PublicMindFrame(){
         init();
         setLayout(new GridLayout(1,1));
+        setLocation(700,200);
         setVisible(true);
         setTitle("Public Mind");
         setSize(WIDTH,HEIGHT);

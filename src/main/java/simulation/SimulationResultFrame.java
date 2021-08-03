@@ -16,6 +16,7 @@ public class SimulationResultFrame extends JFrame{
         smo = new Simulation_Menu_One();
         add(smo);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(700,200);
         setBackground(Color.WHITE);
         setResizable(false);
         setSize(500,700);
