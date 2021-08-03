@@ -1,6 +1,8 @@
 package simulation;
 
 
+import buttons.UtilButton;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -105,8 +107,7 @@ public class GetPercentage extends JPanel {
         labelQuestion[3].setText("긍정어와 부정어 데이터의 비율");
     }
     private void buttonSeting(){
-        btn = new JButton("전송");
-        btn.setBackground(Color.WHITE);
+        btn = new UtilButton("전송");
         btn.setBounds(270, 600, 200, 50);
         btn.setFont(font);
         add(btn);

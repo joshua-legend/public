@@ -34,7 +34,6 @@ public class MainPagePanel extends JPanel {
             }
             if(e.getX()>65 && e.getX()<265 && e.getY()>360 && e.getY()<490){
                 simulationPanelMain = new SimulationPanelMain();
-
             }
         }
     }

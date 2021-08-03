@@ -14,6 +14,7 @@ public class NumberThread extends JPanel implements Runnable{
     Image img;
     int imgNumber= 5;
     static boolean numberCheck;
+    public static SimulationResultFrame simulationResultFrame;
     public NumberThread () {
         Thread t= new Thread(this);
         t.start();
@@ -31,7 +32,7 @@ public class NumberThread extends JPanel implements Runnable{
                 if(imgNumber==0) {
                     numberCheck= true;
                     MainPagePanel.simulationPanelMain.dispose();
-                    new SimulationResultFrame();
+                    simulationResultFrame = new SimulationResultFrame();
                     break;
                 }
             }

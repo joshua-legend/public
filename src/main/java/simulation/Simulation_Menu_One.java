@@ -18,20 +18,22 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import activityPanel.MainPagePanel;
+import activityPanel.PublicMindFrame;
+import buttons.UtilButton;
 import com.sun.jdi.Value;
 
 
 public class Simulation_Menu_One extends JPanel {
     ImageIcon politicianImage;
     ImageIcon partyImage;
-    JButton btn[] = new JButton[2];
+    private JButton btn;
     private Peple_SetingData ps = new Peple_SetingData();
     private int number;
-    private String str[] = {"당선자 정보","투표마감"};
     private JPanel panelFirst  = new JPanel();
+    private Simulation_Map simulation_map = new Simulation_Map();
+
     private JPanel btnPanel;
-    private JLabel nameLabel;
-    private JLabel numberLabel;
     private String[] nameRank = new String[3];
     private double[] perRank = new double[3];
     public Simulation_Menu_One() {
@@ -44,40 +46,12 @@ public class Simulation_Menu_One extends JPanel {
         ps.peple(nameRank[number],perRank[number]);
         electedPerson();
         add("Center",panelFirst);
-        buttonPanel(str);
+        buttonPanel();
         buttonSeting();
-    }
-    private void candidateSeting() {
-        partyImage= ps.backgroundImage;
-        politicianImage = ps.icon;
-        nameLabel.setText(ps.candidateName);
-        numberLabel.setForeground(Color.WHITE);
-        numberLabel.setText(ps.symbolNumber);
-    }
-
-    private void partySeting() {
-        if(ps.candidateParty=="더불어민주당") {
-            candidateSeting();
-        }else if(ps.candidateParty=="국민의힘") {
-            candidateSeting();
-        }else if(ps.candidateParty=="정의당") {
-            candidateSeting();
-            numberLabel.setForeground(Color.BLACK);
-        }else if(ps.candidateParty=="국민의당") {
-            candidateSeting();
-        }else if(ps.candidateParty=="열린민주당") {
-            candidateSeting();
-        }else if(ps.candidateParty=="기본소득당") {
-            candidateSeting();
-        }else if(ps.candidateParty=="시대전환") {
-            candidateSeting();
-        }else if(ps.candidateParty=="국가혁명당") {
-            candidateSeting();
-        }
     }
     private void buttonSeting() {
         JButton button = new JButton();
-        ImageIcon icon = new ImageIcon("img/50blue.png");
+        ImageIcon icon = new ImageIcon("img/50.png");
         button.setSize(50,50);
         button.setIcon(icon);
         button.setBounds(420,274, 50, 50);
@@ -90,27 +64,24 @@ public class Simulation_Menu_One extends JPanel {
                 number++;
                 if(number==3)number=0;
                 ps.peple(nameRank[number],perRank[number]);
-                electedPerson();
                 panelFirst.add(button);
+                electedPerson();
                 panelFirst.setVisible(true);
                 setVisible(true);
             }
         });
         panelFirst.add(button);
     }
-    private void buttonPanel(String[] str) {
+    private void buttonPanel() {
         Font font = new Font("맑은 고딕",Font.PLAIN,20);
         btnPanel = new JPanel();
         btnPanel.setBackground(Color.WHITE);
-        btnPanel.setLayout(new GridLayout(2,2));
-        for(int i=0;i<btn.length;i++) {
-            btn[i] = new JButton(str[i]);
-            btn[i].setFont(font);
-            btn[i].setFocusPainted(false);
-            btn[i].setBackground(Color.WHITE);
-            buttonEvent(btn[i]);
-            btnPanel.add(btn[i]);
-        }
+        btnPanel.setLayout(new GridLayout(1,1));
+        btn = new UtilButton("종료");
+        btn.setFont(font);
+        btn.setFocusPainted(false);
+        buttonEvent(btn);
+        btnPanel.add(btn);
         add("South",btnPanel);
     }
     private void buttonEvent(JButton inButton) {
@@ -118,12 +89,8 @@ public class Simulation_Menu_One extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton button = (JButton)e.getSource();
-                if(button.getText().equals("당선자 정보")) {
-                    electedPerson();
-                    add("Center",panelFirst);
-                    panelFirst.setVisible(true);
-                }else if(button.getText().equals("투표마감")) {
-                    System.exit(0);
+                if(button.getText().equals("종료")) {
+                    NumberThread.simulationResultFrame.dispose();
                 }
             }
         });
@@ -146,6 +113,12 @@ public class Simulation_Menu_One extends JPanel {
         numLabel.setText(ps.candidatePercentage+"%");
         numLabel.setFont(font);
         numLabel.setBounds(300,500,300,80);
+        JLabel rank = new JLabel();
+        rank.setText(1+number+"위");
+        rank.setForeground(Color.WHITE);
+        rank.setFont(font);
+        rank.setBounds(380,30, 150, 80);
+        panelFirst.add(rank);
         panelFirst.add(nameLabel);
         panelFirst.add(numLabel);
         panelFirst.add(imgLabel);

@@ -33,4 +33,11 @@ public class UtilButton extends JButton {
         setForeground(Color.decode(vo.getRgb()));
         setUI(new StyledButtonUI());
     }
+    public UtilButton(String text) {
+        setFont(new Font("UhBee ZZIBA",Font.PLAIN,20));
+        setText(text);
+        setBackground(Color.decode("#90caf9"));
+        setForeground(Color.decode("#424242"));
+        setUI(new StyledButtonUI());
+    }
 }
